@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useTransition, animated } from 'react-spring'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 
 function Navigation(){
 
     const [show, setShow] = useState(false); //default
     const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
+
+    //Router NavLink styling
+    let navlinkStyle = "text-red-400";
 
     //React Spring
     const maskTransition = useTransition(show, null, {
@@ -60,9 +63,9 @@ function Navigation(){
                                     Workout app ✌️
                                 </div>
                                 <ul className="text-left">
-                                    <li> <Link to="/" className="py-3 block" onClick={() => setShow(false)}>Dashboard</Link> </li>
-                                    <li> <Link to="/weight" className="py-3 block" onClick={() => setShow(false)}>Tělesné váhy</Link> </li>
-                                    <li> <Link to="/records" className="py-3 block" onClick={() => setShow(false)}>Maximálky</Link> </li>
+                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
+                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Tělesné váhy</NavLink> </li>
+                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
                                 </ul>
                             </animated.div>
                         )
@@ -73,9 +76,9 @@ function Navigation(){
             { /* Desktop view of navigation */ }
             {!isMobile &&
                 <div>
-                    <Link to="/" className="inline p-3">Dashboard</Link>
-                    <Link to="/weight" className="inline p-3">Tělesné váhy</Link>
-                    <Link to="/records" className="inline p-3">Maximálky</Link>
+                    <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3">Dashboard</NavLink>
+                    <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3">Tělesné váhy</NavLink>
+                    <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3">Maximálky</NavLink>
                 </div>
             }
         </nav>
