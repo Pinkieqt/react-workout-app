@@ -8,6 +8,32 @@ function RecordsComponent(){
     const [selectedUser, setSelectedUser] = useState("dudu");
     const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
 
+    function generateTableCells(isMobile) {
+        let tableCells = Exercises.map(exercise => {
+            let tableDesign = "bg-orange-200";
+            if (exercise.category === "chest") tableDesign = "bg-blue-200";
+            else if (exercise.category === "back") tableDesign = "bg-yellow-200";
+            else if (exercise.category === "shoulders") tableDesign = "bg-red-400";
+            else if (exercise.category === "arms") tableDesign = "bg-red-600";
+    
+            if(isMobile){
+                let memberMax = 0;
+                let memberWorking = 0;
+                // for (member in Members){
+                //     if (member.records)
+                // }
+            }
+
+            return (
+                <tr key={exercise.key}>
+                    <td className={`border px-4 py-2 ${tableDesign}`}>{exercise.label}</td>
+                    <td className="border px-4 py-2">15</td>
+                    <td className="border px-4 py-2">28</td>
+                </tr>
+            )
+        })
+    }
+
     //Table cells
     const tableCells = Exercises.map(exercise => {
         let tableDesign = "bg-orange-200";
@@ -27,7 +53,7 @@ function RecordsComponent(){
 
     //Table heading cells
     const tableHeaderCells = Members.map(member => 
-        <th key={member.key} colspan="2">{member.label}</th>
+        <th key={member.key} colSpan="2">{member.label}</th>
     );
 
     //Select options
