@@ -6,7 +6,7 @@ import { useTransition, animated } from 'react-spring'
 import ModalArrivalView from "../Views/ModalArrivalsView";
 import ModalWeightView from "../Views/ModalWeightView";
 
-function AppendModal(){
+function AppendModal(method_props){
 
     const [show, setShow] = useState(false);
     const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
@@ -24,6 +24,11 @@ function AppendModal(){
         enter: { opacity: 1, transform: "translateY(0%)" },
         leave: { opacity: 0, transform: "translateY(-100%)" },
     })
+
+    //Handler to dismiss modal
+    function showHandler() {
+        setShow(false);
+    }
 
     return (
         <div>
@@ -84,11 +89,11 @@ function AppendModal(){
 
                         {selector ? 
                             <div>
-                                <ModalArrivalView />
+                                <ModalArrivalView usersData={method_props.usersData} submitHandler={showHandler} />
                             </div>
                             :
                             <div>
-                                <ModalWeightView />
+                                <ModalWeightView usersData={method_props.usersData} submitHandler={showHandler} />
                             </div>
                         }
 

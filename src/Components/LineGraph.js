@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Months from "../Helpfiles/Months";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 

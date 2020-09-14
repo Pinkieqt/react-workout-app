@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import AppendModal from './AppendModal';
 
-function Header(){
+function Header(props){
     return (
         <header className="border-b p-3 flex mb-4">
             <span className="font-bold w-1/3">
@@ -10,7 +10,7 @@ function Header(){
             </span>
 
             <div className="w-1/3 text-center">
-                <AppendModal />
+                <AppendModal usersData={props.usersData}/>
             </div>
             
             <div className="w-1/3 text-right">

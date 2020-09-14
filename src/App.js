@@ -10,6 +10,8 @@ import Footer from './Components/Footer';
 import DashboardComponent from "./Views/Dashboard";
 import RecordsComponent from "./Views/Records";
 import WeightComponent from "./Views/Weight";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const firebase = require('firebase');
 
@@ -35,7 +37,7 @@ function App() {
     <div className="App">
       <Router>
         <div className="flex flex-col">
-          <Header />
+          <Header usersData={usersData}/>
           <div className="p-3 min-h-screen">
             <Switch>
               <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
@@ -44,8 +46,20 @@ function App() {
             </Switch>          
           </div>
 
-
           <Footer/>
+
+          <ToastContainer
+            position="bottom-left"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable={false}
+            pauseOnHover
+          />
+
         </div>
       </Router>
     </div>

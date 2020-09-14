@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Members from "../Helpfiles/Members";
 
-function ModalWeightView(){
+function ModalWeightView(props){
 
     const [selectedUser, setSelectedUser] = useState("dudu");
     const [inputWeight, setInputWeight] = useState(66.6);
