@@ -82,7 +82,6 @@ function DashboardComponent(props){
             }           
         });
 
-        console.log(categories);
         setLineGraphContent(categories);
     }
 

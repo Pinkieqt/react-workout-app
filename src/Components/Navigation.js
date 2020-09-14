@@ -65,6 +65,7 @@ function Navigation(){
                                 <ul className="text-left">
                                     <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
                                     <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
+                                    <li> <NavLink to="/measurements" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Míry</NavLink> </li>
                                     <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
                                 </ul>
                             </animated.div>
@@ -78,6 +79,7 @@ function Navigation(){
                 <div>
                     <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3">Dashboard</NavLink>
                     <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3">Tělesná váha</NavLink>
+                    <NavLink to="/measurements" activeClassName={navlinkStyle} className="inline p-3">Míry</NavLink>
                     <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3">Maximálky</NavLink>
                 </div>
             }

@@ -37,11 +37,11 @@ function ModalArrivalView(props){
     
     //Function to register members when arriving
     function onSubmit(){
-        let selectedDate = date;
-        selectedDate.setHours(12, 0, 0, 0);
-        
         const db = firebase.firestore();
 
+        let selectedDate = date;
+        selectedDate.setHours(12, 0, 0, 0);
+    
         let addedMembers = [];
         let notAddedMembers = [];
 

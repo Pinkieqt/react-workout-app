@@ -12,6 +12,7 @@ import RecordsComponent from "./Views/Records";
 import WeightComponent from "./Views/Weight";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MeasurementsComponent from './Views/Measurements';
 
 const firebase = require('firebase');
 
@@ -43,6 +44,7 @@ function App() {
               <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
               <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>
               <Route path="/records"> <RecordsComponent usersData={usersData}/> </Route>
+              <Route path="/measurements"> <MeasurementsComponent usersData={usersData}/> </Route>
             </Switch>          
           </div>
 
