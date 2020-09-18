@@ -47,8 +47,8 @@ function ModalWeightView(props){
         let date = new Date();
         date.setHours(12, 0, 0, 0);
 
-        const memberData = props.usersData.data.filter(item => {
-            return item.id === selectedUser;
+        const memberData = props.usersData.data.filter(member => {
+            return member.id === selectedUser;
         });
 
         let tmpWeight = memberData[0].weightData;
@@ -70,23 +70,23 @@ function ModalWeightView(props){
 
     return (
         <div>
-            <h2 className="font-bold mt-5 mb-5">Vyber se, zadej svou váhu a poté ulož změny.</h2>
-            <select name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
+            <h2 className="font-bold mt-5 mb-5 text-gray-300">Vyber se, zadej svou váhu a poté ulož změny.</h2>
+            <select className="bg-dark bg-opacity-50 border-b border-green-300 text-white text-xl shadow rounded-md p-2" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
                 {options}
             </select>
 
             <div className="mt-5">
-                <input className="font-bold text-4xl bg-gray-300 text-center" type="number" id="weightInput" name="weight" min="65" max="100" step="0.1" value={inputWeight} onChange={(e) => onInputHandle(e)}>
+                <input className="font-bold text-4xl text-white bg-dark text-center" type="number" id="weightInput" name="weight" min="65" max="100" step="0.1" value={inputWeight} onChange={(e) => onInputHandle(e)}>
                 </input>
             </div>
 
             <div>
-                <input className="w-full sm:w-full lg:w-64 mt-5" type="range" id="points" name="points" min="65" max="110" value={inputWeight} onChange={(e) => onInputHandle(e)} step="0.1">
+                <input className="w-full sm:w-full lg:w-64 mt-5 bg-red-300" type="range" id="points" name="points" min="65" max="110" value={inputWeight} onChange={(e) => onInputHandle(e)} step="0.1">
                 </input>
             </div>
 
             <div>
-                <button onClick={() => onSubmit()} type="submit" className="bg-gray-400 w-full sm:w-full lg:w-32 p-2 mt-8 shadow rounded-md font-bold">Uložit změny</button>
+                <button onClick={() => onSubmit()} type="submit" className="bg-white hover:bg-red-400 text-white bg-opacity-25 w-full sm:w-full md:w-32 lg:w-32 p-2 mt-8 shadow rounded-md font-bold transition duration-500 ease-in-out">Uložit změny</button>
             </div>
 
         </div>

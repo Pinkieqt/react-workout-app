@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Members from "../Helpfiles/Members";
 import Notification from "../Components/Notification";
 
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+import DatePicker from 'react-date-picker';
 
 const firebase = require('firebase');
 
@@ -19,8 +18,8 @@ function ModalArrivalView(props){
     const [renderFix, setRenderFix] = useState(false);
 
     //Buttons with members
-    let checkedButton = "bg-red-200 w-32 p-2 m-2 shadow rounded-md";
-    let uncheckedButton = "bg-gray-400 w-32 p-2 m-2 shadow rounded-md";
+    let checkedButton = "bg-gradient-to-r from-green-300 to-green-400 text-white w-32 p-2 m-2 shadow rounded-md";
+    let uncheckedButton = "bg-white hover:bg-green-200 bg-opacity-25 text-white w-32 p-2 m-2 shadow rounded-md transition duration-500 ease-in-out";
 
     let checkboxItems = Members.map((item) => 
         <button className={selectedButtons[item.key] ? checkedButton : uncheckedButton} onClick={() => onCheckChange(item.key)} key={item.key}>{item.label}</button>
@@ -50,8 +49,8 @@ function ModalArrivalView(props){
             let isInside = false;
             //Member arrived
             if(arrived){
-                const memberData = props.usersData.data.filter(item => {
-                    return item.id === element;
+                const memberData = props.usersData.data.filter(member => {
+                    return member.id === element;
                 });
 
                 //check if member is already registered
@@ -84,19 +83,29 @@ function ModalArrivalView(props){
         props.submitHandler();
     }
 
+
     //Render
     return (
         <div>
             <div>
-                <p>Níže lze vybrat jiné datum pro pozdější zápisy.</p>
-                <DayPickerInput value={date} onDayChange={day => setDate(day)} hideOnDayClick format="D/M/YYYY" />
+                <p className="py-6 text-gray-300">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
+                {/* <DayPickerInput value={date} onDayChange={day => setDate(day)} hideOnDayClick format="MM/dd/yyyy"/> */}
+                    <DatePicker
+                        onChange={day => setDate(day)} 
+                        value={date}
+                        className="bg-white bg-opacity-25 text-white shadow rounded-md p-2"
+                        calendarClassName="text-black"
+                        clearIcon={null}
+                        calendarIcon={null}
+                    />
             </div>
-            <h2 className="font-bold mt-5 mb-5">Klikni na členy, kteří dnes přišli do posilovny a ulož změny. O provedených změnách budeš informován.</h2>
+            <h2 className="font-bold mt-5 text-gray-300">Klikni na členy, kteří dnes přišli do posilovny a ulož změny.</h2>
+            <h2 className="font-bold mb-5 text-gray-300"> O provedených změnách budeš informován.</h2>
             <div className="flex-col sm:flex-col md:flex-row items-center">
                 {checkboxItems}
             </div>
             <div>
-                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="bg-gray-400 w-full sm:w-full lg:w-32 p-2 mt-8 shadow rounded-md font-bold">Uložit změny</button>
+                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="bg-white hover:bg-red-400 text-white bg-opacity-25 w-full sm:w-full md:w-32 lg:w-32 p-2 mt-8 shadow rounded-md font-bold transition duration-500 ease-in-out">Uložit změny</button>
             </div>
         </div>
     )

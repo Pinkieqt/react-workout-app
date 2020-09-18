@@ -40,7 +40,7 @@ function AppendModal(method_props){
             }
 
             {!isMobile && 
-                <span className="text-l" onClick={() => setShow(!show)} >
+                <span className="text-l cursor-pointer" onClick={() => setShow(!show)} >
                     Připsat data <FontAwesomeIcon icon={ faPlus } />
                 </span>
             }
@@ -67,23 +67,23 @@ function AppendModal(method_props){
                     <animated.div 
                         key={key} 
                         style={props} 
-                        className="fixed bg-gray-300 top-0 left-0 w-full h-auto z-50 shadow p-3 "
+                        className="fixed bg-dark top-0 left-0 w-full h-auto z-50 shadow p-3 "
                     >
                         <div className="font-bold p-3 text-right">
-                            <span className="text-xl">
-                                <FontAwesomeIcon icon={ faTimes } onClick={() => setShow(!show)} />
+                            <span className="text-xl text-white">
+                                <FontAwesomeIcon icon={ faTimes } className="cursor-pointer" onClick={() => setShow(!show)} />
                             </span>
                         </div>
 
                         {selector ?
                             <div>
-                                <button className="w-32 rounded-lg bg-gray-700 hover:bg-gray-500 p-3 m-3">Příchod</button>
-                                <button onClick={() => setSelector(false)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 p-3 m-3">Váha</button>
+                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-green-300 to-green-400 hover:bg-gray-500 p-3 m-3">Příchod</button>
+                                <button onClick={() => setSelector(false)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Váha</button>
                             </div>
                             :
                             <div>
-                                <button onClick={() => setSelector(true)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 p-3 m-3">Příchod</button>
-                                <button className="w-32 rounded-lg bg-gray-700 hover:bg-gray-500 p-3 m-3">Váha</button>
+                                <button onClick={() => setSelector(true)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Příchod</button>
+                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-green-300 to-green-400 hover:bg-gray-500 p-3 m-3">Váha</button>
                             </div>
                         }
 

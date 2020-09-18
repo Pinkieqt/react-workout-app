@@ -11,7 +11,7 @@ function Navigation(){
     const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
 
     //Router NavLink styling
-    let navlinkStyle = "text-red-400";
+    let navlinkStyle = "text-primary border-b-2";
 
     //React Spring
     const maskTransition = useTransition(show, null, {

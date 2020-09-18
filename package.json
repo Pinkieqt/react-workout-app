@@ -15,6 +15,7 @@
     "firebase": "^7.19.1",
     "postcss-cli": "^7.1.2",
     "react": "^16.13.1",
+    "react-date-picker": "^8.0.3",
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
     "react-responsive": "^8.1.0",

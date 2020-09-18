@@ -1,12 +1,13 @@
 import React from 'react';
 import Navigation from './Navigation';
 import AppendModal from './AppendModal';
+import { NavLink } from "react-router-dom";
 
 function Header(props){
     return (
         <header className="border-b p-3 flex mb-4">
             <span className="font-bold w-1/3">
-                💪ezworkout
+                <NavLink exact to="/">💪ezworkout</NavLink>
             </span>
 
             <div className="w-1/3 text-center">

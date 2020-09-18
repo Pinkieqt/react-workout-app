@@ -2,42 +2,56 @@ const Exercises = [
     {
         key: 'df',
         label: 'Deadlift',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'squat',
         label: 'Squat',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'fsquat',
         label: 'Front Squat',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'hacksquat',
         label: 'Hack Squat',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'sumodf',
         label: 'Sumo Deadlift',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'romaniandf',
         label: 'Rumunský Deadlift',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'vykopy',
         label: 'Výkopy',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
     },
     {
         key: 'vypady',
         label: 'Výpady',
-        category: 'legs'
+        category: 'legs',
+        kategorie: 'nohy'
+    },
+    {
+        key: 'calfraises',
+        label: 'Lýtka',
+        category: 'legs',
+        kategorie: 'nohy'
     },
     /*
         CHEST
@@ -45,22 +59,26 @@ const Exercises = [
     {
         key: 'bench',
         label: 'Benchpress',
-        category: 'chest'
+        category: 'chest',
+        kategorie: 'hrudník'
     },
     {
         key: 'inclinebarbell',
         label: 'Incline Barbell',
-        category: 'chest'
+        category: 'chest',
+        kategorie: 'hrudník'
     },
     {
         key: 'inclinedumbbell',
         label: 'Incline Dumbbell',
-        category: 'chest'
+        category: 'chest',
+        kategorie: 'hrudník'
     },
     {
         key: 'butterflies',
         label: 'Motýlci',
-        category: 'chest'
+        category: 'chest',
+        kategorie: 'hrudník'
     },
     /*
         ARMS
@@ -68,22 +86,26 @@ const Exercises = [
     {
         key: 'tricepslano',
         label: 'Triceps (lano)',
-        category: 'arms'
+        category: 'arms',
+        kategorie: 'ruce'
     },
     {
         key: 'tricepsdumbbell',
         label: 'Triceps (činky)',
-        category: 'arms'
+        category: 'arms',
+        kategorie: 'ruce'
     },
     {
         key: 'bicepslano',
         label: 'Biceps (lano)',
-        category: 'arms'
+        category: 'arms',
+        kategorie: 'ruce'
     },
     {
         key: 'bicepsdumbbell',
         label: 'Biceps (činky)',
-        category: 'arms'
+        category: 'arms',
+        kategorie: 'ruce'
     },
     /*
         BACK
@@ -91,32 +113,38 @@ const Exercises = [
     {
         key: 'pulldown',
         label: 'Pulldown',
-        category: 'back'
+        category: 'back',
+        kategorie: 'záda'
     },
     {
         key: 'oppositepulldown',
         label: 'Opposite Pulldown',
-        category: 'back'
+        category: 'back',
+        kategorie: 'záda'
     },
     {
         key: 'row',
         label: 'Row (dvojruč)',
-        category: 'back'
+        category: 'back',
+        kategorie: 'záda'
     },
     {
         key: 'rowdumbbell',
         label: 'Row (jednoruč)(upass)',
-        category: 'back'
+        category: 'back',
+        kategorie: 'záda'
     },
     {
         key: 'facepull',
         label: 'Face pull',
-        category: 'back'
+        category: 'back',
+        kategorie: 'záda'
     },
     {
         key: 'rowdumbbellbench',
         label: 'Row (jednoruč)(bench)',
-        category: 'back'
+        category: 'back',
+        kategorie: 'záda'
     },
     /*
         SHOULDERS
@@ -124,27 +152,32 @@ const Exercises = [
     {
         key: 'military',
         label: 'Military Press',
-        category: 'shoulders'
+        category: 'shoulders',
+        kategorie: 'ramena'
     },
     {
         key: 'militarydumbbell',
         label: 'Military (jednoruč)',
-        category: 'shoulders'
+        category: 'shoulders',
+        kategorie: 'ramena'
     },
     {
         key: 'rozpazky',
         label: 'Rozpažky',
-        category: 'shoulders'
+        category: 'shoulders',
+        kategorie: 'ramena'
     },
     {
         key: 'volant',
         label: 'Volant',
-        category: 'shoulders'
+        category: 'shoulders',
+        kategorie: 'ramena'
     },
     {
         key: 'backdelt',
         label: 'Zadní delty',
-        category: 'shoulders'
+        category: 'shoulders',
+        kategorie: 'ramena'
     },    
   ];
   

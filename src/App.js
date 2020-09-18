@@ -37,9 +37,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-gray-100">
           <Header usersData={usersData}/>
-          <div className="p-3 min-h-screen">
+          <div className="p-3 min-h-screen bg-gray-100">
             <Switch>
               <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
               <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>

@@ -19,7 +19,7 @@ function LineGraph(props){
     const graphData = getLines();
 
     return (
-        <ResponsiveContainer width="50%" height={300}>
+        <ResponsiveContainer width="100%" height="100%">
             <LineChart
                 data={graphData}
                 margin={{
@@ -32,12 +32,12 @@ function LineGraph(props){
                 <Tooltip />
                 {/* <Legend /> */}
 
-                { graphData[0][18] > -1 && <Line type="monotone" dataKey="18" stroke="#8884d8" activeDot={{ r: 8 }} /> }
-                { graphData[0][19] > -1 && <Line type="monotone" dataKey="19" stroke="#8884d8" activeDot={{ r: 8 }} /> }
-                { graphData[0][20] > -1 && <Line type="monotone" dataKey="20" stroke="#666666" activeDot={{ r: 8 }} /> }
-                { graphData[0][21] > -1 && <Line type="monotone" dataKey="21" stroke="#8884d8" activeDot={{ r: 8 }} /> }
-                { graphData[0][22] > -1 && <Line type="monotone" dataKey="22" stroke="#8884d8" activeDot={{ r: 8 }} /> }
-                { graphData[0][23] > -1 && <Line type="monotone" dataKey="23" stroke="#8884d8" activeDot={{ r: 8 }} /> }
+                { graphData[0][18] > -1 && <Line type="monotone" dataKey="18" stroke="#8884d8"  strokeWidth={2}/> }
+                { graphData[0][19] > -1 && <Line type="monotone" dataKey="19" stroke="#8884d8"  strokeWidth={2}/> }
+                { graphData[0][20] > -1 && <Line type="monotone" dataKey="20" stroke="bg-primary"  strokeWidth={2}/> }
+                { graphData[0][21] > -1 && <Line type="monotone" dataKey="21" stroke="#8884d8"  strokeWidth={2}/> }
+                { graphData[0][22] > -1 && <Line type="monotone" dataKey="22" stroke="#8884d8"  strokeWidth={2}/> }
+                { graphData[0][23] > -1 && <Line type="monotone" dataKey="23" stroke="#8884d8"  strokeWidth={2}/> }
 
 
             </LineChart>
