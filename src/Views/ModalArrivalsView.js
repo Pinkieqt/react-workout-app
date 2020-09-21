@@ -18,8 +18,8 @@ function ModalArrivalView(props){
     const [renderFix, setRenderFix] = useState(false);
 
     //Buttons with members
-    let checkedButton = "bg-gradient-to-r from-green-300 to-green-400 text-white w-32 p-2 m-2 shadow rounded-md";
-    let uncheckedButton = "bg-white hover:bg-green-200 bg-opacity-25 text-white w-32 p-2 m-2 shadow rounded-md transition duration-500 ease-in-out";
+    let checkedButton = "bg-gradient-to-r from-mytheme-300 to-mytheme-400 text-white w-32 p-2 m-2 shadow rounded-md";
+    let uncheckedButton = "bg-white hover:bg-mytheme-200 bg-opacity-25 text-white w-32 p-2 m-2 shadow rounded-md transition duration-500 ease-in-out";
 
     let checkboxItems = Members.map((item) => 
         <button className={selectedButtons[item.key] ? checkedButton : uncheckedButton} onClick={() => onCheckChange(item.key)} key={item.key}>{item.label}</button>
@@ -80,7 +80,7 @@ function ModalArrivalView(props){
         if (notAddedMembers.length === 1) Notification("Uživatel " + notAddedMembers.toString() + " je již zapsán.", true);
         
         //Dismiss modal
-        props.submitHandler();
+        //props.submitHandler();
     }
 
 

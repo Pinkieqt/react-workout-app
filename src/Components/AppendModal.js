@@ -77,13 +77,13 @@ function AppendModal(method_props){
 
                         {selector ?
                             <div>
-                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-green-300 to-green-400 hover:bg-gray-500 p-3 m-3">Příchod</button>
+                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-mytheme-300 to-mytheme-400 hover:bg-gray-500 p-3 m-3">Příchod</button>
                                 <button onClick={() => setSelector(false)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Váha</button>
                             </div>
                             :
                             <div>
                                 <button onClick={() => setSelector(true)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Příchod</button>
-                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-green-300 to-green-400 hover:bg-gray-500 p-3 m-3">Váha</button>
+                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-mytheme-300 to-mytheme-400 hover:bg-gray-500 p-3 m-3">Váha</button>
                             </div>
                         }
 

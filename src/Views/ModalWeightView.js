@@ -71,7 +71,7 @@ function ModalWeightView(props){
     return (
         <div>
             <h2 className="font-bold mt-5 mb-5 text-gray-300">Vyber se, zadej svou váhu a poté ulož změny.</h2>
-            <select className="bg-dark bg-opacity-50 border-b border-green-300 text-white text-xl shadow rounded-md p-2" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
+            <select className="bg-dark bg-opacity-50 border-b border-mytheme-300 text-white text-xl shadow rounded-md p-2" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
                 {options}
             </select>
 

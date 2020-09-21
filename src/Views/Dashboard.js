@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
 import BarGraph from "../Components/BarGraph";
 import LineGraph from "../Components/LineGraph";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+
+const firebase = require('firebase');
 
 function DashboardComponent(props){
     //props.usersData.
@@ -47,8 +51,13 @@ function DashboardComponent(props){
             let tmpDate = element.date.getDate() + "/" + element.date.getMonth();
             return (
                 <tr key={element.key}>
-                    <td className="border px-4 py-2">{element.member}</td>
-                    <td className="border px-4 py-2">{tmpDate}</td>
+                    <td className="border px-4 py-1">{element.member}</td>
+                    <td className="border px-4 py-1">{tmpDate}</td>
+                    <td className="border px-4 py-1">
+                        <span>
+                            <FontAwesomeIcon className="cursor-pointer" icon={ faTrashAlt } onClick={() => deleteLastArrival(element)} />
+                        </span>
+                    </td>
                 </tr>
             )
         })
@@ -59,6 +68,26 @@ function DashboardComponent(props){
         setArrivalsTableContent(latestArrivals);
         setBarGraphContent(barGraphData);
         setContent({thisYear: thisYear, total: total, latest: date});
+    }
+
+    //function to delete last arrival
+    function deleteLastArrival(element){
+        const db = firebase.firestore()
+
+        let tmpArrivals = [];
+        props.usersData.data.forEach(user => {
+            if (user.name === element.member){
+                console.log(user);
+                tmpArrivals = user.arrivals;
+                tmpArrivals.forEach(arrival => {
+                    if (arrival === firebase.firestore.Timestamp.fromDate(element.date)){
+                        console.log("hm,m");
+                    }
+                });
+            }
+        });
+
+        console.log(element);
     }
 
     //function to generate data for line graph
@@ -138,12 +167,13 @@ function DashboardComponent(props){
                         </div>
 
                         <div className="w-full sm:w-full md:w-1/5 h-64 bg-white rounded-lg shadow-md m-1 sm:m-1 md:m-5 p-2 text-center">
-                            <table className="w-full table-auto text-center py-2">
+                            <table className="w-full table-auto text-center py-2 h-56">
                                     <thead>
                                         <tr>
                                             {/* TODO: overflow a dát jich tam třeba 15 aby to bylo scrollable */}
-                                            <th className="px-4 py-2">Uživatel</th>
-                                            <th className="px-4 py-2">Datum příchodu</th>
+                                            <th className="px-4 py-1">Uživatel</th>
+                                            <th className="px-4 py-1">Příchod</th>
+                                            <th className="px-4 py-1"></th>
                                         </tr>
                                     </thead>
                                 <tbody>
