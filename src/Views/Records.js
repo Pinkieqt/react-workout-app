@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-regular-svg-icons';
 
 import LoadingSpinner from "../Components/LoadingSpinner";
 import Exercises from "../Helpfiles/Exercises";
 import Members from "../Helpfiles/Members";
+import FloatingDialog from "../Components/FloatingDialog";
 
 function RecordsComponent(props){
     
     const [selectedUser, setSelectedUser] = useState("dudu");
     const [isLoading, setIsLoading] = useState(true);
-    const [isDropdownActive, setIsDropdownACtive] = useState(false);
 
     //Generate new content everytime when props change
     useEffect(() => {
@@ -20,7 +18,7 @@ function RecordsComponent(props){
         else {
             setIsLoading(true);
         }
-    }, [props]);
+    }, [props, selectedUser]);
 
     //Cards
     let cards = Exercises.map(exercise  => {
@@ -56,12 +54,12 @@ function RecordsComponent(props){
                     <div className={`w-full h-1 rounded-full ${tableDesign}`}></div>
                     <span className="flex justify-between px-3 pt-2">
                         <span className={`inline-block text-white text-xs px-2 rounded-full uppercase ${tableDesign}`}> {exercise.kategorie} </span>
-                        <FontAwesomeIcon className="text-gray-600 hover:text-red-400 cursor-pointer" icon={ faEdit } onClick={() => setIsDropdownACtive(true)}/>
+                        <FloatingDialog usersData={props.usersData} selectedUser={selectedUser} exercise={exercise.key} exMax={max} exWork={work} />
                     </span>
                     <div className="px-6 pb-6">
                         <div className="font-bold"> {exercise.label} </div>
-                        <div className=""> Pracovní váha: {work} </div>
-                        <div className=""> Maximální váha: {max} </div>
+                        <div className=""> Pracovní váha: {work} kg</div>
+                        <div className=""> Maximální váha: {max} kg</div>
                     </div>
                 </div>
             );
@@ -75,10 +73,6 @@ function RecordsComponent(props){
         </option>
     );
 
-    function onSelectChangeHandle(e){
-        setSelectedUser(e.target.value);
-    }
-
 
     return (
         
@@ -91,17 +85,12 @@ function RecordsComponent(props){
 
             {!isLoading &&
                 <div>
-                    <select className="mb-5" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
+                    <select className="mb-5" name="members" id="memberSelector" onChange={(e) => setSelectedUser(e.target.value)}>
                         {options}
                     </select>
                     <div className="flex justify-center flex-wrap">
                         {cards}
                     </div>
-                    {isDropdownActive &&
-                        <div className="flex justify-center content-center bg-gray-500 w-64 h-64">
-                            ahooj
-                        </div>
-                    }
                 </div>
             }
         </div>

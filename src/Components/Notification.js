@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Notification(text, isError){
 
     const notificationStyle = {
-        position: "bottom-left",
+        position: "bottom-right",
         autoClose: 3500,
         hideProgressBar: false,
         closeOnClick: true,

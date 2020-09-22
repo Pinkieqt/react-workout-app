@@ -4,6 +4,7 @@ import BarGraph from "../Components/BarGraph";
 import LineGraph from "../Components/LineGraph";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import Notification from "../Components/Notification";
 
 const firebase = require('firebase');
 
@@ -48,14 +49,14 @@ function DashboardComponent(props){
         
         //Map elements to html
         latestArrivals = latestArrivals.slice(0,5).map(element => {
-            let tmpDate = element.date.getDate() + "/" + element.date.getMonth();
+            let tmpDate = element.date.getDate() + "/" + (element.date.getMonth() + 1);
             return (
                 <tr key={element.key}>
                     <td className="border px-4 py-1">{element.member}</td>
                     <td className="border px-4 py-1">{tmpDate}</td>
                     <td className="border px-4 py-1">
                         <span>
-                            <FontAwesomeIcon className="cursor-pointer" icon={ faTrashAlt } onClick={() => deleteLastArrival(element)} />
+                            <FontAwesomeIcon className="cursor-pointer text-gray-600 hover:text-mytheme-500" icon={ faTrashAlt } onClick={() => deleteLastArrival(element)} />
                         </span>
                     </td>
                 </tr>
@@ -63,7 +64,7 @@ function DashboardComponent(props){
         })
 
 
-        let date = latest.toDate().getDate() + "/" + latest.toDate().getMonth();
+        let date = latest.toDate().getDate() + "/" + (latest.toDate().getMonth() + 1);
 
         setArrivalsTableContent(latestArrivals);
         setBarGraphContent(barGraphData);
@@ -77,17 +78,28 @@ function DashboardComponent(props){
         let tmpArrivals = [];
         props.usersData.data.forEach(user => {
             if (user.name === element.member){
-                console.log(user);
                 tmpArrivals = user.arrivals;
                 tmpArrivals.forEach(arrival => {
-                    if (arrival === firebase.firestore.Timestamp.fromDate(element.date)){
-                        console.log("hm,m");
+                    if (arrival.toDate().getTime() === firebase.firestore.Timestamp.fromDate(element.date).toDate().getTime()){
+                        //Delete arrival from array
+                        tmpArrivals.splice(tmpArrivals.indexOf(arrival), 1);
+
+                        if(window.confirm("Opravdu vymazat záznam?")){
+                            //Update record in database
+                            db.collection("users").doc(user.id).update({ arrivals : tmpArrivals })
+                            .then(function (){
+                                Notification("Záznam byl smazán.", false)
+                            })
+                            .catch(function(error) {
+                                console.log(error); 
+                                Notification("Chyba", true);
+                            });
+                        }
                     }
                 });
             }
         });
 
-        console.log(element);
     }
 
     //function to generate data for line graph

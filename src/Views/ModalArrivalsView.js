@@ -80,7 +80,7 @@ function ModalArrivalView(props){
         if (notAddedMembers.length === 1) Notification("Uživatel " + notAddedMembers.toString() + " je již zapsán.", true);
         
         //Dismiss modal
-        //props.submitHandler();
+        props.submitHandler();
     }
 
 
