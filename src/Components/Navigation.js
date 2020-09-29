@@ -11,7 +11,7 @@ function Navigation(){
     const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
 
     //Router NavLink styling
-    let navlinkStyle = "text-mytheme-500 border-b-2";
+    let navlinkStyle = "text-myTheme-sec md:border-b-2";
 
     //React Spring
     const maskTransition = useTransition(show, null, {
@@ -31,7 +31,7 @@ function Navigation(){
             { /* Mobile view of navigation */ }
             {isMobile &&
                 <div>
-                    <span className="text-xl">
+                    <span className="text-xl text-myTheme-tpr">
                         <FontAwesomeIcon icon={ faBars } onClick={() => setShow(!show)} />
                     </span>
 
@@ -57,16 +57,16 @@ function Navigation(){
                             <animated.div 
                                 key={key} 
                                 style={props} 
-                                className="fixed bg-gray-300 top-0 left-0 w-3/5 h-full z-50 shadow p-3 "
+                                className="fixed bg-myTheme-bg top-0 left-0 w-3/5 h-full z-50 shadow p-3 "
                             >
                                 <div className="font-bold p-3 text-center border-b-2 border-gray-500">
-                                    Workout app ✌️
+                                    Gym u Duduho ✌️
                                 </div>
                                 <ul className="text-left">
-                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
-                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
-                                    <li> <NavLink to="/measurements" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Míry</NavLink> </li>
-                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
+                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
+                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
+                                    {/* <li> <NavLink to="/measurements" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Míry</NavLink> </li> */}
+                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
                                 </ul>
                             </animated.div>
                         )
@@ -77,10 +77,10 @@ function Navigation(){
             { /* Desktop view of navigation */ }
             {!isMobile &&
                 <div>
-                    <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3">Dashboard</NavLink>
-                    <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3">Tělesná váha</NavLink>
-                    <NavLink to="/measurements" activeClassName={navlinkStyle} className="inline p-3">Míry</NavLink>
-                    <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3">Maximálky</NavLink>
+                    <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Dashboard</NavLink>
+                    <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Tělesná váha</NavLink>
+                    {/* <NavLink to="/measurements" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Míry</NavLink> */}
+                    <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Maximálky</NavLink>
                 </div>
             }
         </nav>

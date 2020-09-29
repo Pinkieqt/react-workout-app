@@ -17,13 +17,7 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
         setWork(props.exWork);
     }, [props])
 
-    //React Spring
-    const maskTransition = useTransition(show, null, {
-        from: { position: 'absolute', opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-    })
-
+    //React spring
     const menuTransition = useTransition(show, null, {
         from: { opacity: 0},
         enter: { opacity: 1},
@@ -74,24 +68,8 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
     return (
         <>
             <span>
-                <FontAwesomeIcon className="text-gray-600 hover:text-mytheme-500 cursor-pointer" icon={ faEdit } onClick={() => setShow(!show)}/>
+                <FontAwesomeIcon className="text-myTheme-tsec hover:text-myTheme-tpr cursor-pointer" icon={ faEdit } onClick={() => setShow(!show)}/>
             </span>
-
-
-            { /* Mask/background transition and content */ }
-            {
-                maskTransition.map(({ item, key, props }) =>
-                    item && 
-                    <animated.div 
-                        key={key} 
-                        style={props} 
-                        className="fixed bg-black-t-30 top-0 left-0 w-full h-full z-50"
-                        // onClick={() => setShow(!show)}
-                    >
-                    </animated.div>
-                )
-            }
-
 
             { /* Menu transition and content */ }
             {
@@ -107,28 +85,28 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
                             <div className="m-auto">
                                 <div className="w-full sm:w-full md:w-64 bg-white rounded-lg shadow-md m-1 sm:m-1 md:m-6 text-center">
 
-                                    <h2 className="py-6 text-xl">Úprava váhy</h2>
+                                    <h2 className="py-6 text-xl text-myTheme-tpr">Úprava váhy</h2>
 
-                                    <label className="w-full text-gray-600">
+                                    <label className="w-full text-myTheme-tsec">
                                         Pracovní váha
                                     </label>
                                     <div className="py-3">
-                                        <input className="font-bold text-xl text-center" 
+                                        <input className="font-bold text-xl text-center text-myTheme-tpr" 
                                                 type="number" id="workingWeight" name="workingWeight" min="0" max="300" 
                                                 step="0.5" value={work} onChange={(e) => setWork(e.target.value)} />
                                     </div>
 
-                                    <label className="w-full text-gray-600 pt-5">
+                                    <label className="w-full text-myTheme-tsec pt-5">
                                         Maximální váha
                                     </label>
                                     <div className="py-3">
-                                        <input className="font-bold text-xl text-center" 
+                                        <input className="font-bold text-xl text-center text-myTheme-tpr" 
                                                 type="number" id="maxWeight" name="maxWeight" min="0" max="300" 
                                                 step="0.5" value={max} onChange={(e) => setMax(e.target.value)} />
                                     </div>
                                     <div className="flex justify-center w-full">
-                                        <button onClick={() => setShow(!show)} type="submit" className="bg-white hover:bg-red-300 text-gray-600 hover:text-white w-1/2 p-2 m-3 shadow rounded-md font-bold transition duration-500 ease-in-out">Storno</button>
-                                        <button onClick={() => onSubmit()} type="button" className="bg-gradient-to-r text-white from-mytheme-300 to-mytheme-400 hover:text-black w-1/2 p-2 m-3 shadow rounded-md font-bold transition duration-500 ease-in-out">Uložit</button>
+                                        <button onClick={() => setShow(!show)} type="submit" className="w-1/2 rounded-lg shadow-xl border p-3 m-3 mt-12">Storno</button>
+                                        <button onClick={() => onSubmit()} type="button" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border p-3 m-3 mt-12 w-1/2">Uložit</button>
                                     </div>
                                 </div>
                             </div>

@@ -18,8 +18,8 @@ function ModalArrivalView(props){
     const [renderFix, setRenderFix] = useState(false);
 
     //Buttons with members
-    let checkedButton = "bg-gradient-to-r from-mytheme-300 to-mytheme-400 text-white w-32 p-2 m-2 shadow rounded-md";
-    let uncheckedButton = "bg-white hover:bg-mytheme-200 bg-opacity-25 text-white w-32 p-2 m-2 shadow rounded-md transition duration-500 ease-in-out";
+    let checkedButton = "bg-myTheme-sec border border-myTheme-sec text-white w-32 p-2 m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    let uncheckedButton = "text-myTheme-tpr border w-32 p-2 m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
 
     let checkboxItems = Members.map((item) => 
         <button className={selectedButtons[item.key] ? checkedButton : uncheckedButton} onClick={() => onCheckChange(item.key)} key={item.key}>{item.label}</button>
@@ -88,24 +88,25 @@ function ModalArrivalView(props){
     return (
         <div>
             <div>
-                <p className="py-6 text-gray-300">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
+                <p className="py-6 text-myTheme-tsec">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
                 {/* <DayPickerInput value={date} onDayChange={day => setDate(day)} hideOnDayClick format="MM/dd/yyyy"/> */}
                     <DatePicker
                         onChange={day => setDate(day)} 
                         value={date}
-                        className="bg-white bg-opacity-25 text-white shadow rounded-md p-2"
+                        className="text-myTheme-tpr shadow rounded-md p-2"
                         calendarClassName="text-black"
                         clearIcon={null}
                         calendarIcon={null}
                     />
             </div>
-            <h2 className="font-bold mt-5 text-gray-300">Klikni na členy, kteří dnes přišli do posilovny a ulož změny.</h2>
-            <h2 className="font-bold mb-5 text-gray-300"> O provedených změnách budeš informován.</h2>
+            <h2 className="font-bold mt-5 text-myTheme-tsec">Klikni na členy, kteří dnes přišli do posilovny a ulož změny.</h2>
+            <h2 className="font-bold mb-5 text-myTheme-tsec"> O provedených změnách budeš informován.</h2>
             <div className="flex-col sm:flex-col md:flex-row items-center">
                 {checkboxItems}
             </div>
-            <div>
-                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="bg-white hover:bg-red-400 text-white bg-opacity-25 w-full sm:w-full md:w-32 lg:w-32 p-2 mt-8 shadow rounded-md font-bold transition duration-500 ease-in-out">Uložit změny</button>
+            <div className="flex justify-center flex-wrap">
+                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border p-3 m-3 mt-12">Zrušit</button>
+                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border p-3 m-3 mt-12">Uložit změny</button>
             </div>
         </div>
     )

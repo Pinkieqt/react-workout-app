@@ -14,18 +14,19 @@ module.exports = {
         'secondary': '#f75a48'
       },
       colors: {
-        "mytheme": {
-          "100": "#f2fcf7",
-          "200": "#bbf1d3",
-          "300": "#88e7b3",
-          "400": "#51dc8f",
-          "500": "#28c870",
-          "600": "#20a15a",
-          "700": "#187743",
-          "800": "#10512d",
-          "900": "#092a18"
-        }
+        "myTheme": {
+          "pr": "#1B1A34", //primary
+          "sec": "#5D65D3", //secondary
+          "tpr": "#1B1A34", //text primary
+          "tsec": "#67677D", //text secondary
+          "bg": "#F7F8FC",
+          "cardbg": "#ffffff"
+        },
     },
+    fontFamily: {
+      mont: ['Montserrat'],
+      robot: ['Roboto Condensed']
+    }
     }
   },
   variants: {},

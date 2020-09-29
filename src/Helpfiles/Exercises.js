@@ -5,6 +5,18 @@ const Exercises = [
         category: 'legs',
         kategorie: 'nohy'
     },
+    // {
+    //     key: 'sumodf',
+    //     label: 'Sumo Deadlift',
+    //     category: 'legs',
+    //     kategorie: 'nohy'
+    // },
+    {
+        key: 'romaniandf',
+        label: 'Rumunský Deadlift',
+        category: 'legs',
+        kategorie: 'nohy'
+    },
     {
         key: 'squat',
         label: 'Squat',
@@ -20,18 +32,6 @@ const Exercises = [
     {
         key: 'hacksquat',
         label: 'Hack Squat',
-        category: 'legs',
-        kategorie: 'nohy'
-    },
-    {
-        key: 'sumodf',
-        label: 'Sumo Deadlift',
-        category: 'legs',
-        kategorie: 'nohy'
-    },
-    {
-        key: 'romaniandf',
-        label: 'Rumunský Deadlift',
         category: 'legs',
         kategorie: 'nohy'
     },

@@ -18,7 +18,7 @@ function BarGraph(props){
                 {/* <YAxis /> */}
                 <Tooltip />
                 {/* <Legend /> */}
-                <Bar dataKey="arrivals" fill="#88e7b3" barSize={30} />
+                <Bar dataKey="arrivals" fill="#1B1A34" barSize={30} />
         </BarChart>
       </ResponsiveContainer>
     );

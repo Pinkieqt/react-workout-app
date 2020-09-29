@@ -35,16 +35,16 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App font-robot">
       <Router>
-        <div className="flex flex-col bg-gray-100">
+        <div className="flex flex-col bg-myTheme-bg ">
           <Header usersData={usersData}/>
-          <div className="p-3 min-h-screen bg-gray-100">
+          <div className="p-3 min-h-screen bg-myTheme-bg">
             <Switch>
               <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
               <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>
               <Route path="/records"> <RecordsComponent usersData={usersData}/> </Route>
-              <Route path="/measurements"> <MeasurementsComponent usersData={usersData}/> </Route>
+              {/* <Route path="/measurements"> <MeasurementsComponent usersData={usersData}/> </Route> */}
             </Switch>          
           </div>
 

@@ -34,13 +34,13 @@ function AppendModal(method_props){
         <div>
             { /* Other view for desktop and mobile */ }
             {isMobile && 
-                <span className="text-xl">
+                <span className="text-xl text-myTheme-tpr">
                     <FontAwesomeIcon icon={ faPlus } onClick={() => setShow(!show)} />
                 </span>
             }
 
             {!isMobile && 
-                <span className="text-l cursor-pointer" onClick={() => setShow(!show)} >
+                <span className="text-l cursor-pointer text-myTheme-tpr" onClick={() => setShow(!show)} >
                     Připsat data <FontAwesomeIcon icon={ faPlus } />
                 </span>
             }
@@ -67,23 +67,23 @@ function AppendModal(method_props){
                     <animated.div 
                         key={key} 
                         style={props} 
-                        className="fixed bg-dark top-0 left-0 w-full h-auto z-50 shadow p-3 "
+                        className="fixed bg-myTheme-cardbg top-0 left-0 w-full h-auto z-50 shadow p-3 "
                     >
                         <div className="font-bold p-3 text-right">
-                            <span className="text-xl text-white">
+                            <span className="text-xl text-myTheme-tpr">
                                 <FontAwesomeIcon icon={ faTimes } className="cursor-pointer" onClick={() => setShow(!show)} />
                             </span>
                         </div>
 
                         {selector ?
                             <div>
-                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-mytheme-300 to-mytheme-400 hover:bg-gray-500 p-3 m-3">Příchod</button>
-                                <button onClick={() => setSelector(false)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Váha</button>
+                                <button className="w-32 rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border p-3 m-3">Příchod</button>
+                                <button onClick={() => setSelector(false)} className="w-32 rounded-lg shadow-xl border hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Váha</button>
                             </div>
                             :
                             <div>
-                                <button onClick={() => setSelector(true)} className="w-32 rounded-lg bg-gray-200 hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Příchod</button>
-                                <button className="w-32 rounded-lg bg-gradient-to-r text-white font-bold from-mytheme-300 to-mytheme-400 hover:bg-gray-500 p-3 m-3">Váha</button>
+                                <button onClick={() => setSelector(true)} className="w-32 rounded-lg shadow-xl border hover:bg-gray-500 transition duration-500 ease-in-out p-3 m-3">Příchod</button>
+                                <button className="w-32 rounded-lg font-bold bg-myTheme-pr text-white shadow-xl  border p-3 m-3">Váha</button>
                             </div>
                         }
 
