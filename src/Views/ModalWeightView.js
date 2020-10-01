@@ -86,8 +86,8 @@ function ModalWeightView(props){
             </div>
 
             <div className="flex justify-center flex-wrap">
-                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border p-3 m-3 mt-12">Zrušit</button>
-                <button onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border p-3 m-3 mt-12">Uložit změny</button>
+                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
+                <button onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
             </div>
 
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Members from "../Helpfiles/Members";
 import Notification from "../Components/Notification";
-
+import { useMediaQuery } from 'react-responsive';
 import DatePicker from 'react-date-picker';
 
 const firebase = require('firebase');
@@ -11,6 +11,7 @@ function ModalArrivalView(props){
     const [selectedButtons, setSelectedButtons] = useState({dudu: false, luke: false, tom: false, dejvo: false, cahlik: false});
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
     const [date, setDate] = useState(new Date());
+    const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
 
     // HAVE To be there because updating dictionary in state (for example the dictionary two lines up) 
     // does NOT call the render function!
@@ -18,8 +19,8 @@ function ModalArrivalView(props){
     const [renderFix, setRenderFix] = useState(false);
 
     //Buttons with members
-    let checkedButton = "bg-myTheme-sec border border-myTheme-sec text-white w-32 p-2 m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
-    let uncheckedButton = "text-myTheme-tpr border w-32 p-2 m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    let checkedButton = "bg-myTheme-sec border border-myTheme-sec text-white w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    let uncheckedButton = "text-myTheme-tpr border w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
 
     let checkboxItems = Members.map((item) => 
         <button className={selectedButtons[item.key] ? checkedButton : uncheckedButton} onClick={() => onCheckChange(item.key)} key={item.key}>{item.label}</button>
@@ -88,25 +89,29 @@ function ModalArrivalView(props){
     return (
         <div>
             <div>
-                <p className="py-6 text-myTheme-tsec">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
+                {!isMobile &&
+                    <p className="py-6 text-myTheme-tsec">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
+                }
                 {/* <DayPickerInput value={date} onDayChange={day => setDate(day)} hideOnDayClick format="MM/dd/yyyy"/> */}
                     <DatePicker
                         onChange={day => setDate(day)} 
                         value={date}
-                        className="text-myTheme-tpr shadow rounded-md p-2"
-                        calendarClassName="text-black"
+                        className="text-myTheme-tpr shadow rounded-md px-2 py-1 sm:py-1 md:py-2"
+                        calendarClassName="text-black bg-myTheme-bg"
                         clearIcon={null}
                         calendarIcon={null}
                     />
             </div>
             <h2 className="font-bold mt-5 text-myTheme-tsec">Klikni na členy, kteří dnes přišli do posilovny a ulož změny.</h2>
-            <h2 className="font-bold mb-5 text-myTheme-tsec"> O provedených změnách budeš informován.</h2>
+            {!isMobile &&
+                <h2 className="font-bold mb-5 text-myTheme-tsec"> O provedených změnách budeš informován.</h2>
+            }
             <div className="flex-col sm:flex-col md:flex-row items-center">
                 {checkboxItems}
             </div>
             <div className="flex justify-center flex-wrap">
-                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border p-3 m-3 mt-12">Zrušit</button>
-                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border p-3 m-3 mt-12">Uložit změny</button>
+                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
+                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
             </div>
         </div>
     )

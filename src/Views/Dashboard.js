@@ -75,6 +75,7 @@ function DashboardComponent(props){
     function deleteLastArrival(element){
         const db = firebase.firestore()
 
+        console.log("hm");
         let tmpArrivals = [];
         props.usersData.data.forEach(user => {
             if (user.name === element.member){
@@ -82,9 +83,8 @@ function DashboardComponent(props){
                 tmpArrivals.forEach(arrival => {
                     if (arrival.toDate().getTime() === firebase.firestore.Timestamp.fromDate(element.date).toDate().getTime()){
                         //Delete arrival from array
-                        tmpArrivals.splice(tmpArrivals.indexOf(arrival), 1);
-
                         if(window.confirm("Opravdu vymazat záznam?")){
+                            tmpArrivals.splice(tmpArrivals.indexOf(arrival), 1);
                             //Update record in database
                             db.collection("users").doc(user.id).update({ arrivals : tmpArrivals })
                             .then(function (){
@@ -197,7 +197,7 @@ function DashboardComponent(props){
                                 </div>
                             </div>
 
-                            <div className="w-full sm:w-full md:w-2/5 h-64 p-1 sm:p-1 md:p-6 mt-2 sm:mt-2 md:mt-0">
+                            <div className="w-full sm:w-full md:w-2/5 h-64 p-1 sm:p-1 md:p-6 mt-2 sm:mt-2 md:mt-0 mb-12 sm:mb-12 md:mb-0">
                                 <div className="w-full">
                                     <h3 className="text-center text-myTheme-tsec mb-2">Poslední příchody</h3>
                                 </div>

@@ -31,10 +31,11 @@ function Navigation(){
             { /* Mobile view of navigation */ }
             {isMobile &&
                 <div>
-                    <span className="text-xl text-myTheme-tpr">
-                        <FontAwesomeIcon icon={ faBars } onClick={() => setShow(!show)} />
-                    </span>
-
+                    <div className="w-full h-full" onClick={() => setShow(!show)} >
+                        <span className="text-xl text-myTheme-tpr">
+                            <FontAwesomeIcon icon={ faBars } onClick={() => setShow(!show)} />
+                        </span>
+                    </div>
                     { /* Mask/background transition and content */ }
                     {
                         maskTransition.map(({ item, key, props }) =>
@@ -42,7 +43,7 @@ function Navigation(){
                             <animated.div 
                                 key={key} 
                                 style={props} 
-                                className="bg-black-t-30 fixed top-0 left-0 w-full h-full z-50"
+                                className="bg-black-t-30 fixed top-0 left-0 w-full kokot z-50"
                                 onClick={() => setShow(false)}
                             >
                             </animated.div>
@@ -63,10 +64,10 @@ function Navigation(){
                                     Gym u Duduho ✌️
                                 </div>
                                 <ul className="text-left">
-                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
-                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
+                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
+                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
                                     {/* <li> <NavLink to="/measurements" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Míry</NavLink> </li> */}
-                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
+                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
                                 </ul>
                             </animated.div>
                         )

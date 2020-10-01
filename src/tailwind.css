@@ -19608,6 +19608,14 @@ video {
   animation: bounce 1s infinite;
 }
 
+.kokot{
+  height: 3000px;
+}
+
+.react-date-picker__wrapper{
+  border: thin solid red;
+}
+
 .loader {
   border: 5px solid #f3f3f3;
   border-radius: 50%;

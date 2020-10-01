@@ -7,7 +7,7 @@ function Notification(text, isError){
 
     const notificationStyle = {
         position: "bottom-right",
-        autoClose: 3500,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

@@ -48,11 +48,11 @@ function App() {
             </Switch>          
           </div>
 
-          <Footer/>
+          <Footer className="mt-12 sm:mt-12 md:mt-0"/>
 
           <ToastContainer
-            position="bottom-left"
-            autoClose={2000}
+            position="bottom-right"
+            autoClose={3000}
             hideProgressBar={false}
             newestOnTop
             closeOnClick
