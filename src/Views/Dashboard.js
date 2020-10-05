@@ -5,6 +5,7 @@ import LineGraph from "../Components/LineGraph";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import Notification from "../Components/Notification";
+import ArrivalsGraph from "../Components/ArrivalsGraph";
 
 const firebase = require('firebase');
 
@@ -74,8 +75,7 @@ function DashboardComponent(props){
     //function to delete last arrival
     function deleteLastArrival(element){
         const db = firebase.firestore()
-
-        console.log("hm");
+        
         let tmpArrivals = [];
         props.usersData.data.forEach(user => {
             if (user.name === element.member){
@@ -216,6 +216,14 @@ function DashboardComponent(props){
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+
+                        
+                        {/* ArrivalsGraph */}
+                        <div className="w-full p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-12 mt-5 sm:mt-5 md:mt-20">
+                            <div className="w-full bg-myTheme-cardbg rounded shadow-xl text-center" >
+                                <ArrivalsGraph usersData={props.usersData}/>
                             </div>
                         </div>
                     </div>

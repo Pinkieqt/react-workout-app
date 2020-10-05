@@ -32,12 +32,13 @@ function LineGraph(props){
                 <Tooltip />
                 {/* <Legend /> */}
 
-                { graphData[0][18] > -1 && <Line type="monotone" dataKey="18" stroke="#61305d"  strokeWidth={2} dot={false}/> }
-                { graphData[0][19] > -1 && <Line type="monotone" dataKey="19" stroke="#b55c6c"  strokeWidth={2} dot={false}/> }
-                { graphData[0][20] > -1 && <Line type="monotone" dataKey="20" stroke="#e77c7c"  strokeWidth={2} dot={false}/> }
-                { graphData[0][21] > -1 && <Line type="monotone" dataKey="21" stroke="#f7b679"  strokeWidth={2} dot={false}/> }
-                { graphData[0][22] > -1 && <Line type="monotone" dataKey="22" stroke="#8884d8"  strokeWidth={2} dot={false}/> }
-                { graphData[0][23] > -1 && <Line type="monotone" dataKey="23" stroke="#8884d8"  strokeWidth={2} dot={false}/> }
+                { graphData[0][18] > -1 && <Line type="monotone" dataKey="18" stroke="#fece90"  strokeWidth={2} dot={false}/> }
+                { graphData[0][19] > -1 && <Line type="monotone" dataKey="19" stroke="#f76b5c"  strokeWidth={2} dot={false}/> }
+                { graphData[0][20] > -1 && <Line type="monotone" dataKey="20" stroke="#d3446d"  strokeWidth={2} dot={false}/> }
+                { graphData[0][21] > -1 && <Line type="monotone" dataKey="21" stroke="#992c7f"  strokeWidth={2} dot={false}/> }
+                { graphData[0][22] > -1 && <Line type="monotone" dataKey="22" stroke="#58157e"  strokeWidth={2} dot={false}/> }
+                { graphData[0][23] > -1 && <Line type="monotone" dataKey="23" stroke="#1B1A34"  strokeWidth={2} dot={false}/> }
+                { graphData[0][24] > -1 && <Line type="monotone" dataKey="24" stroke="#07051a"  strokeWidth={2} dot={false}/> }
 
 
             </LineChart>

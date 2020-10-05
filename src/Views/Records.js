@@ -43,7 +43,7 @@ function RecordsComponent(props){
             }
 
             //Color of card background -> legs/shoulders/hands/chest/back
-            let tableDesign = "bg-orange-300 "; //LEGS default
+            let tableDesign = "bg-orange-300"; //LEGS default
             if (exercise.category === "chest") tableDesign = "bg-blue-300";
             else if (exercise.category === "back") tableDesign = "bg-yellow-400";
             else if (exercise.category === "shoulders") tableDesign = "bg-red-300";
@@ -53,7 +53,7 @@ function RecordsComponent(props){
                 <div key={exercise.key} className={`w-full sm:w-full md:w-56 bg-myTheme-cardbg rounded-lg shadow-lg m-1 sm:m-1 md:m-5 mb-5 text-left`}>
                     <div className={`w-full h-1 rounded-full ${tableDesign}`}></div>
                     <span className="flex justify-between px-3 pt-2">
-                        <span className={`tracking-wider inline-block text-myTheme-cardbg text-xs px-2 mt-1 rounded-full uppercase  ${tableDesign}`}> {exercise.kategorie} </span>
+                        <span className={`tracking-wider inline-block text-myTheme-cardbg text-xs px-2 mt-2 rounded-full uppercase  ${tableDesign}`}> {exercise.kategorie} </span>
                         <FloatingDialog usersData={props.usersData} selectedUser={selectedUser} exercise={exercise.key} exMax={max} exWork={work} />
                     </span>
                     <div className="px-6 pb-6">

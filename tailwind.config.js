@@ -22,6 +22,15 @@ module.exports = {
           "bg": "#F7F8FC",
           "cardbg": "#ffffff"
         },
+        "magma": {
+          "1": "#fece90",
+          "2": "#f76b5c",
+          "3": "#d3446d",
+          "4": "#992c7f",
+          "5": "#58157e",
+          "6": "#1B1A34",
+          "7": "#07051a",
+        }
     },
     fontFamily: {
       mont: ['Montserrat'],
