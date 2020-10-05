@@ -36,6 +36,18 @@ const Exercises = [
         kategorie: 'nohy'
     },
     {
+        key: 'romaniansquat',
+        label: 'Bulgarian Split Squat',
+        category: 'legs',
+        kategorie: 'nohy'
+    },
+    {
+        key: 'gobletsquat',
+        label: 'Goblet Squat',
+        category: 'legs',
+        kategorie: 'nohy'
+    },
+    {
         key: 'vykopy',
         label: 'Výkopy',
         category: 'legs',
@@ -59,6 +71,12 @@ const Exercises = [
     {
         key: 'bench',
         label: 'Benchpress',
+        category: 'chest',
+        kategorie: 'hrudník'
+    },
+    {
+        key: 'closebench',
+        label: 'Close Benchpress',
         category: 'chest',
         kategorie: 'hrudník'
     },
@@ -96,6 +114,12 @@ const Exercises = [
         kategorie: 'ruce'
     },
     {
+        key: 'tricepslanounderhand',
+        label: 'Triceps UH (lano)',
+        category: 'arms',
+        kategorie: 'ruce'
+    },
+    {
         key: 'bicepslano',
         label: 'Biceps (lano)',
         category: 'arms',
@@ -123,6 +147,12 @@ const Exercises = [
         kategorie: 'záda'
     },
     {
+        key: 'trianglepulldown',
+        label: 'Triangle Pulldown',
+        category: 'back',
+        kategorie: 'záda'
+    },
+    {
         key: 'row',
         label: 'Row (dvojruč)',
         category: 'back',
@@ -135,14 +165,20 @@ const Exercises = [
         kategorie: 'záda'
     },
     {
+        key: 'rowdumbbellbench',
+        label: 'Row (jednoruč)(bench)',
+        category: 'back',
+        kategorie: 'záda'
+    },
+    {
         key: 'facepull',
         label: 'Face pull',
         category: 'back',
         kategorie: 'záda'
     },
     {
-        key: 'rowdumbbellbench',
-        label: 'Row (jednoruč)(bench)',
+        key: 'kneepull',
+        label: 'Knee pull',
         category: 'back',
         kategorie: 'záda'
     },

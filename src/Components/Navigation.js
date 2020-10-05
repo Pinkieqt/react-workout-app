@@ -66,7 +66,7 @@ function Navigation(){
                                 <ul className="text-left">
                                     <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
                                     <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
-                                    {/* <li> <NavLink to="/measurements" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr" onClick={() => setShow(false)}>Míry</NavLink> </li> */}
+                                    <li> <NavLink to="/plans" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Plány</NavLink> </li>
                                     <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
                                 </ul>
                             </animated.div>
@@ -80,7 +80,7 @@ function Navigation(){
                 <div>
                     <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Dashboard</NavLink>
                     <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Tělesná váha</NavLink>
-                    {/* <NavLink to="/measurements" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Míry</NavLink> */}
+                    <NavLink to="/plans" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Plány</NavLink>
                     <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Maximálky</NavLink>
                 </div>
             }
