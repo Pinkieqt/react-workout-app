@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 
 function Header(props){
     return (
-        <header className="border-b p-3 flex mb-4 bg-myTheme-cardbg">
-            <span className="font-bold w-1/3 text-myTheme-tpr items-center content-center">
+        <header className="border-b border-myLightTheme-cardbg p-3 flex mb-4 bg-myLightTheme-cardbg">
+            <span className="font-bold w-1/3 text-myLightTheme-tpr items-center content-center">
                 <NavLink exact to="/">💪🏼</NavLink>
             </span>
 

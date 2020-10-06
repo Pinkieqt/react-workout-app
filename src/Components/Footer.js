@@ -5,22 +5,22 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function Footer(){
     return (
-        <footer className="flex justify-evenly flex-wrap content-center bg-myTheme-pr text-white text-center text-l p-3 w-full">
+        <footer className="flex justify-evenly flex-wrap content-center bg-myLightTheme-footerbg text-white text-center text-l p-3 w-full">
             <div className="w-1/2 my-5">
                 <a href="https://github.com/Pinkieqt/react-workout-app">
                     <span className="text-xl mr-1">
-                        <FontAwesomeIcon icon={ faGithub } />
+                        <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faGithub } />
                     </span>
                     Github
                 </a>
             </div>
             <div className="w-1/2 my-5">
                 Created by
-                <span className="text-myTheme-sec">
+                <span className="text-myLightTheme-sec">
                     &nbsp;Dudu    
                 </span>
                 <span className="text-xl ml-1">
-                        <FontAwesomeIcon icon={ faHeart } />
+                        <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faHeart } />
                 </span>
                 <br></br>
                 

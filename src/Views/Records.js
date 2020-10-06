@@ -50,16 +50,16 @@ function RecordsComponent(props){
             else if (exercise.category === "arms") tableDesign = "bg-green-300";
 
             return (
-                <div key={exercise.key} className={`w-full sm:w-full md:w-56 bg-myTheme-cardbg rounded-lg shadow-lg m-1 sm:m-1 md:m-5 mb-5 text-left`}>
+                <div key={exercise.key} className={`w-full sm:w-full md:w-56 bg-myLightTheme-cardbg rounded-lg shadow-lg m-1 sm:m-1 md:m-5 mb-5 text-left`}>
                     <div className={`w-full h-1 rounded-full ${tableDesign}`}></div>
                     <span className="flex justify-between px-3 pt-2">
-                        <span className={`tracking-wider inline-block text-myTheme-cardbg text-xs px-2 mt-2 rounded-full uppercase  ${tableDesign}`}> {exercise.kategorie} </span>
+                        <span className={`tracking-wider inline-block text-myLightTheme-cardbg text-xs px-2 mt-2 rounded-full uppercase  ${tableDesign}`}> {exercise.kategorie} </span>
                         <FloatingDialog usersData={props.usersData} selectedUser={selectedUser} exercise={exercise.key} exMax={max} exWork={work} />
                     </span>
-                    <div className="px-6 pb-6">
-                        <div className="font-bold text-myTheme-tpr"> {exercise.label} </div>
-                        <div className="text-myTheme-tsec"> Pracovní váha: {work} kg</div>
-                        <div className="text-myTheme-tsec"> Maximální váha: {max} kg</div>
+                    <div className="px-6 pb-6 mt-2">
+                        <div className="font-bold text-myLightTheme-tpr"> {exercise.label} </div>
+                        <div className="text-myLightTheme-tsec"> Pracovní váha: {work} kg</div>
+                        <div className="text-myLightTheme-tsec"> Maximální váha: {max} kg</div>
                     </div>
                 </div>
             );
@@ -86,9 +86,9 @@ function RecordsComponent(props){
             {!isLoading &&
                 <div className="container mx-auto">
                     <span>
-                        <h3 className="text-myTheme-tsec mb-5">Vyber uživatele a uprav váhy kliknutím na ikonu "editace" v pravém rohu každého cviku.</h3>
+                        <h3 className="text-myLightTheme-tsec mb-5">Vyber uživatele a uprav váhy kliknutím na ikonu "editace" v pravém rohu každého cviku.</h3>
                     </span>
-                    <select className="text-myTheme-tpr bg-myTheme-bg text-xl p-2 mb-5" name="members" id="memberSelector" onChange={(e) => setSelectedUser(e.target.value)}>
+                    <select className="text-myLightTheme-tpr bg-myLightTheme-bg text-xl p-2 mb-5 cursor-pointer" name="members" id="memberSelector" onChange={(e) => setSelectedUser(e.target.value)}>
                         {options}
                     </select>
                     <div className="flex justify-center flex-wrap">

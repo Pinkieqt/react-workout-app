@@ -35,15 +35,15 @@ function AppendModal(method_props){
             { /* Other view for desktop and mobile */ }
             {isMobile && 
                 <div className="w-full h-full"  onClick={() => setShow(!show)} >
-                    <span className="text-xl text-myTheme-tpr w-full h-full">
-                        <FontAwesomeIcon icon={ faPlus } onClick={() => setShow(!show)} />
+                    <span className="text-xl text-myLightTheme-tpr w-full h-full">
+                        <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faPlus } onClick={() => setShow(!show)} />
                     </span>
                 </div>
             }
 
             {!isMobile && 
-                <span className="text-l cursor-pointer text-myTheme-tpr" onClick={() => setShow(!show)} >
-                    Připsat data <FontAwesomeIcon icon={ faPlus } />
+                <span className="text-l cursor-pointer text-myLightTheme-tpr" onClick={() => setShow(!show)} >
+                    Připsat data <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faPlus } />
                 </span>
             }
 
@@ -69,23 +69,23 @@ function AppendModal(method_props){
                     <animated.div 
                         key={key} 
                         style={props} 
-                        className="fixed bg-myTheme-cardbg top-0 left-0 w-full h-auto z-50 shadow p-3"
+                        className="fixed bg-myLightTheme-cardbg top-0 left-0 w-full h-auto z-50 shadow p-3"
                     >
                         <div className="font-bold p-3 text-right">
-                            <span className="text-xl text-myTheme-tpr">
-                                <FontAwesomeIcon icon={ faTimes } className="cursor-pointer" onClick={() => setShow(!show)} />
+                            <span className="text-xl text-myLightTheme-tpr">
+                                <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faTimes } className="cursor-pointer" onClick={() => setShow(!show)} />
                             </span>
                         </div>
 
                         {selector ?
                             <div>
-                                <button className="w-32 rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3">Příchod</button>
-                                <button onClick={() => setSelector(false)} className="w-32 rounded-lg shadow-xl border hover:bg-gray-500 transition duration-500 ease-in-out px-3 py-1 sm:py-1 md:py-3 m-3">Váha</button>
+                                <button className="w-32 rounded-lg font-bold bg-myLightTheme-sec text-white shadow-xl border  border-myLightTheme-cardbg px-3 py-1 sm:py-1 md:py-3 m-3">Příchod</button>
+                                <button onClick={() => setSelector(false)} className="w-32 rounded-lg shadow-xl border text-myLightTheme-tpr hover:bg-myLightTheme-sec transition duration-500 ease-in-out px-3 py-1 sm:py-1 md:py-3 m-3">Váha</button>
                             </div>
                             :
                             <div>
-                                <button onClick={() => setSelector(true)} className="w-32 rounded-lg shadow-xl border hover:bg-gray-500 transition duration-500 ease-in-out px-3 py-1 sm:py-1 md:py-3 m-3">Příchod</button>
-                                <button className="w-32 rounded-lg font-bold bg-myTheme-pr text-white shadow-xl  border px-3 py-1 sm:py-1 md:py-3 m-3">Váha</button>
+                                <button onClick={() => setSelector(true)} className="w-32 rounded-lg shadow-xl border text-myLightTheme-tpr hover:bg-myLightTheme-sec transition duration-500 ease-in-out px-3 py-1 sm:py-1 md:py-3 m-3">Příchod</button>
+                                <button className="w-32 rounded-lg font-bold bg-myLightTheme-sec text-white shadow-xl border  border-myLightTheme-cardbg px-3 py-1 sm:py-1 md:py-3 m-3">Váha</button>
                             </div>
                         }
 

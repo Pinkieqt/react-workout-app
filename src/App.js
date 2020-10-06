@@ -13,6 +13,7 @@ import WeightComponent from "./Views/Weight";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PlansComponent from "./Views/Plans"
+import ThemeContext from "./Utilities/ThemeContext";
 
 const firebase = require('firebase');
 
@@ -35,36 +36,38 @@ function App() {
   }, []);
 
   return (
-    <div className="App font-robot">
-      <Router>
-        <div className="flex flex-col bg-myTheme-bg ">
-          <Header usersData={usersData}/>
-          <div className="p-3 min-h-screen bg-myTheme-bg">
-            <Switch>
-              <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
-              <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>
-              <Route path="/records"> <RecordsComponent usersData={usersData}/> </Route>
-              <Route path="/plans"> <PlansComponent usersData={usersData}/> </Route>
-            </Switch>          
+    <ThemeContext>
+      <div className="App font-robot">
+        <Router>
+          <div className="flex flex-col bg-myLightTheme-bg ">
+            <Header usersData={usersData}/>
+            <div className="p-3 min-h-screen bg-myLightTheme-bg">
+              <Switch>
+                <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
+                <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>
+                <Route path="/records"> <RecordsComponent usersData={usersData}/> </Route>
+                <Route path="/plans"> <PlansComponent usersData={usersData}/> </Route>
+              </Switch>          
+            </div>
+
+            <Footer className="mt-12 sm:mt-12 md:mt-0"/>
+
+            <ToastContainer
+              position="bottom-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable={false}
+              pauseOnHover
+            />
+
           </div>
-
-          <Footer className="mt-12 sm:mt-12 md:mt-0"/>
-
-          <ToastContainer
-            position="bottom-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable={false}
-            pauseOnHover
-          />
-
-        </div>
-      </Router>
-    </div>
+        </Router>
+      </div>
+    </ThemeContext>
   );
 }
 

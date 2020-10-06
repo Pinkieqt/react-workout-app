@@ -2,8 +2,8 @@ import React from "react";
 
 function WeightComponent(){
     return (
-        <div>
-            <p>to be done 🤷‍♂️</p>
+        <div className="flex flex-wrap justify-center">
+            <p className="mt-64 text-xl text-myLightTheme-tpr">to be done 🤷‍♂️</p>
         </div>
     )
 }

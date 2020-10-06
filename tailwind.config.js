@@ -14,13 +14,25 @@ module.exports = {
         'secondary': '#f75a48'
       },
       colors: {
-        "myTheme": {
+        "myDarkTheme": {
           "pr": "#1B1A34", //primary
-          "sec": "#5D65D3", //secondary
+          "sec": "#FF5260", //secondary
           "tpr": "#1B1A34", //text primary
           "tsec": "#67677D", //text secondary
+          "ttern": "#67677D",
           "bg": "#F7F8FC",
-          "cardbg": "#ffffff"
+          "cardbg": "#ffffff",
+          "footerbg": "#1B1A34"
+        },
+        "myLightTheme": {
+          "pr": "#d0d0d3", //primary
+          "sec": "#FF5260", //secondary
+          "tpr": "#e0e0e0", //text primary
+          "tsec": "#a2a4a6", //text secondary
+          "ttern": "#363738",
+          "bg": "#17171a",
+          "cardbg": "#1a1c1f",
+          "footerbg": "#1a1c1f"
         },
         "magma": {
           "1": "#fece90",

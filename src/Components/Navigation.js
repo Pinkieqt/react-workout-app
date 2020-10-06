@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTint } from '@fortawesome/free-solid-svg-icons';
 import { useTransition, animated } from 'react-spring'
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
+import { ThemeContext } from "../Utilities/ThemeContext";
 
 function Navigation(){
+    //Theme changing
+    const { theme, setTheme } = React.useContext(ThemeContext);
+    const changeTheme = () => {
+        if (theme === "myLightTheme") setTheme("myDarkTheme")
+        else setTheme("myLightTheme")
+    };
 
     const [show, setShow] = useState(false); //default
     const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
 
     //Router NavLink styling
-    let navlinkStyle = "text-myTheme-sec md:border-b-2";
+    let navlinkStyle = "text-myLightTheme-sec md:border-b-2";
 
     //React Spring
     const maskTransition = useTransition(show, null, {
@@ -32,8 +39,8 @@ function Navigation(){
             {isMobile &&
                 <div>
                     <div className="w-full h-full" onClick={() => setShow(!show)} >
-                        <span className="text-xl text-myTheme-tpr">
-                            <FontAwesomeIcon icon={ faBars } onClick={() => setShow(!show)} />
+                        <span className="text-xl text-myLightTheme-tpr">
+                            <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faBars } onClick={() => setShow(!show)} />
                         </span>
                     </div>
                     { /* Mask/background transition and content */ }
@@ -58,16 +65,22 @@ function Navigation(){
                             <animated.div 
                                 key={key} 
                                 style={props} 
-                                className="fixed bg-myTheme-bg top-0 left-0 w-3/5 h-full z-50 shadow p-3 "
+                                className={`fixed bg-${theme}-bg top-0 left-0 w-3/5 h-full z-50 shadow p-3`}
                             >
                                 <div className="font-bold p-3 text-center border-b-2 border-gray-500">
                                     Gym u Duduho ✌️
                                 </div>
                                 <ul className="text-left">
-                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
-                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
-                                    <li> <NavLink to="/plans" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Plány</NavLink> </li>
-                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block text-myTheme-pr text-xl" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
+                                    <li> <NavLink exact to="/" activeClassName={navlinkStyle} className="py-3 block text-myLightTheme-pr text-xl" onClick={() => setShow(false)}>Dashboard</NavLink> </li>
+                                    <li> <NavLink to="/weight" activeClassName={navlinkStyle} className="py-3 block text-myLightTheme-pr text-xl" onClick={() => setShow(false)}>Tělesná váha</NavLink> </li>
+                                    <li> <NavLink to="/plans" activeClassName={navlinkStyle} className="py-3 block text-myLightTheme-pr text-xl" onClick={() => setShow(false)}>Plány</NavLink> </li>
+                                    <li> <NavLink to="/records" activeClassName={navlinkStyle} className="py-3 block text-myLightTheme-pr text-xl" onClick={() => setShow(false)}>Maximálky</NavLink> </li>
+                                    <li className="py-3 block text-xl" onClick={() => changeTheme()} >
+                                        <span className="text-xl text-myLightTheme-pr cursor-pointer">
+                                            Změnit téma&nbsp; &nbsp;
+                                            <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faTint }/>
+                                        </span>
+                                    </li>
                                 </ul>
                             </animated.div>
                         )
@@ -78,10 +91,15 @@ function Navigation(){
             { /* Desktop view of navigation */ }
             {!isMobile &&
                 <div>
-                    <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Dashboard</NavLink>
-                    <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Tělesná váha</NavLink>
-                    <NavLink to="/plans" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Plány</NavLink>
-                    <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3 text-myTheme-pr">Maximálky</NavLink>
+                    <NavLink exact to="/" activeClassName={navlinkStyle} className="inline p-3 text-myLightTheme-pr">Dashboard</NavLink>
+                    <NavLink to="/weight" activeClassName={navlinkStyle} className="inline p-3 text-myLightTheme-pr">Tělesná váha</NavLink>
+                    <NavLink to="/plans" activeClassName={navlinkStyle} className="inline p-3 text-myLightTheme-pr">Plány</NavLink>
+                    <NavLink to="/records" activeClassName={navlinkStyle} className="inline p-3 text-myLightTheme-pr">Maximálky</NavLink>
+                    <li className="inline p-3"> 
+                        <span className="text-xl text-myLightTheme-pr cursor-pointer">
+                            <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faTint } onClick={() => changeTheme()} />
+                        </span>
+                    </li>
                 </div>
             }
         </nav>

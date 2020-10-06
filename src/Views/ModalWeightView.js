@@ -70,24 +70,24 @@ function ModalWeightView(props){
 
     return (
         <div>
-            <h2 className="font-bold mt-5 mb-5 text-myTheme-tsec">Vyber se, zadej svou váhu a poté ulož změny.</h2>
-            <select className="text-myTheme-tpr text-xl p-2" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
+            <h2 className="font-bold mt-5 mb-5 text-myLightTheme-tsec">Vyber se, zadej svou váhu a poté ulož změny.</h2>
+            <select className="bg-myLightTheme-cardbg text-myLightTheme-tpr text-xl p-2 cursor-pointer" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
                 {options}
             </select>
 
             <div className="mt-5">
-                <input className="font-bold text-4xl text-myTheme-tpr text-center" type="number" id="weightInput" name="weight" min="65" max="100" step="0.1" value={inputWeight} onChange={(e) => onInputHandle(e)}>
+                <input className="font-bold text-4xl bg-myLightTheme-cardbg text-myLightTheme-tpr text-center" type="number" id="weightInput" name="weight" min="65" max="100" step="0.1" value={inputWeight} onChange={(e) => onInputHandle(e)}>
                 </input>
             </div>
 
             <div>
-                <input className="w-full sm:w-full lg:w-64 mt-5" type="range" id="points" name="points" min="65" max="110" value={inputWeight} onChange={(e) => onInputHandle(e)} step="0.1">
+                <input className="w-full sm:w-full lg:w-64 mt-5 bg-myLightTheme-cardbg cursor-pointer" type="range" id="points" name="points" min="65" max="110" value={inputWeight} onChange={(e) => onInputHandle(e)} step="0.1">
                 </input>
             </div>
 
             <div className="flex justify-center flex-wrap">
-                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
-                <button onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
+                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg text-myLightTheme-tpr shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
+                <button onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myLightTheme-sec text-myLightTheme-tpr shadow-xl border border-myLightTheme-cardbg px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
             </div>
 
         </div>

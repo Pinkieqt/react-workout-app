@@ -19,8 +19,8 @@ function ModalArrivalView(props){
     const [renderFix, setRenderFix] = useState(false);
 
     //Buttons with members
-    let checkedButton = "bg-myTheme-sec border border-myTheme-sec text-white w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
-    let uncheckedButton = "text-myTheme-tpr border w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    let checkedButton = "bg-magma-2 border border-myLightTheme-sec text-white w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    let uncheckedButton = "text-myLightTheme-tpr border w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
 
     let checkboxItems = Members.map((item) => 
         <button className={selectedButtons[item.key] ? checkedButton : uncheckedButton} onClick={() => onCheckChange(item.key)} key={item.key}>{item.label}</button>
@@ -90,28 +90,28 @@ function ModalArrivalView(props){
         <div>
             <div>
                 {!isMobile &&
-                    <p className="py-6 text-myTheme-tsec">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
+                    <p className="py-6 text-myLightTheme-tsec">Níže lze vybrat jiné datum pro pozdější zápisy.</p>
                 }
                 {/* <DayPickerInput value={date} onDayChange={day => setDate(day)} hideOnDayClick format="MM/dd/yyyy"/> */}
                     <DatePicker
                         onChange={day => setDate(day)} 
                         value={date}
-                        className="text-myTheme-tpr shadow rounded-md px-2 py-1 sm:py-1 md:py-2"
-                        calendarClassName="text-black bg-myTheme-bg"
+                        className="text-myLightTheme-tpr shadow rounded-md px-2 py-1 sm:py-1 md:py-2 cursor-pointer"
+                        calendarClassName="text-black bg-myLightTheme-cardbg"
                         clearIcon={null}
                         calendarIcon={null}
                     />
             </div>
-            <h2 className="font-bold mt-5 text-myTheme-tsec">Klikni na členy, kteří dnes přišli do posilovny a ulož změny.</h2>
+            <h2 className="font-bold mt-5 text-myLightTheme-tsec">Klikni na členy, kteří dnes přišli do posilovny a ulož změny.</h2>
             {!isMobile &&
-                <h2 className="font-bold mb-5 text-myTheme-tsec"> O provedených změnách budeš informován.</h2>
+                <h2 className="font-bold mb-5 text-myLightTheme-tsec"> O provedených změnách budeš informován.</h2>
             }
             <div className="flex-col sm:flex-col md:flex-row items-center">
                 {checkboxItems}
             </div>
             <div className="flex justify-center flex-wrap">
-                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
-                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myTheme-pr text-white shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
+                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg text-myLightTheme-tpr shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
+                <button disabled={isSubmitDisabled} onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myLightTheme-sec text-myLightTheme-tpr shadow-xl border border-myLightTheme-cardbg px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
             </div>
         </div>
     )
