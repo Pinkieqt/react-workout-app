@@ -3,7 +3,6 @@ import Months from "../Helpfiles/Months";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function LineGraph(props){
-
     function getLines(){
         let result = Months;
 

@@ -3,10 +3,12 @@ import { useTransition, animated } from 'react-spring'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-regular-svg-icons';
 import Notification from "./Notification";
+import { ThemeContext } from "../Utilities/ThemeContext";
 
 const firebase = require('firebase');
 
 function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
+    const { theme, setTheme } = React.useContext(ThemeContext);
 
     const [show, setShow] = useState(false);
     const [max, setMax] = useState(0);
@@ -68,7 +70,7 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
     return (
         <>
             <span>
-                <FontAwesomeIcon role="img" aria-label="fntawsm" className="text-myLightTheme-tsec hover:text-myLightTheme-tpr cursor-pointer" icon={ faEdit } onClick={() => setShow(!show)}/>
+                <FontAwesomeIcon role="img" aria-label="fntawsm" className={`text-${theme}-tsec hover:text-${theme}-tpr cursor-pointer`} icon={ faEdit } onClick={() => setShow(!show)}/>
             </span>
 
             { /* Menu transition and content */ }
@@ -78,35 +80,35 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
                     <animated.div 
                         key={key} 
                         style={props} 
-                        className="fixed bg-black-t-30 top-0 left-0 w-full h-auto z-50"
+                        className={`fixed bg-black-t-30 top-0 left-0 w-full h-auto z-50`}
                         // onClick={() => setShow(!show)}
                     >
-                        <div className="flex h-screen">
-                            <div className="m-auto">
-                                <div className="w-full sm:w-full md:w-64 bg-myLightTheme-cardbg rounded-lg shadow-md m-1 sm:m-1 md:m-6 text-center">
+                        <div className={`flex h-screen`}>
+                            <div className={`m-auto`}>
+                                <div className={`w-full sm:w-full md:w-64 bg-${theme}-cardbg rounded-lg shadow-md m-1 sm:m-1 md:m-6 text-center`}>
 
-                                    <h2 className="py-6 text-xl text-myLightTheme-tpr">Úprava váhy</h2>
+                                    <h2 className={`py-6 text-xl text-${theme}-tpr`}>Úprava váhy</h2>
 
-                                    <label className="w-full text-myLightTheme-tsec">
+                                    <label className={`w-full text-${theme}-tsec`}>
                                         Pracovní váha
                                     </label>
-                                    <div className="py-3">
-                                        <input className="font-bold text-xl text-center bg-myLightTheme-cardbg text-myLightTheme-tpr" 
+                                    <div className={`py-3`}>
+                                        <input className={`font-bold text-xl text-center bg-${theme}-cardbg text-${theme}-tpr`} 
                                                 type="number" id="workingWeight" name="workingWeight" min="0" max="300" 
                                                 step="0.5" value={work} onChange={(e) => setWork(e.target.value)} />
                                     </div>
 
-                                    <label className="w-full text-myLightTheme-tsec pt-5">
+                                    <label className={`w-full text-${theme}-tsec pt-5`}>
                                         Maximální váha
                                     </label>
-                                    <div className="py-3">
-                                        <input className="font-bold text-xl text-center bg-myLightTheme-cardbg text-myLightTheme-tpr" 
+                                    <div className={`py-3`}>
+                                        <input className={`font-bold text-xl text-center bg-${theme}-cardbg text-${theme}-tpr`} 
                                                 type="number" id="maxWeight" name="maxWeight" min="0" max="300" 
                                                 step="0.5" value={max} onChange={(e) => setMax(e.target.value)} />
                                     </div>
-                                    <div className="flex justify-center w-full">
-                                        <button onClick={() => setShow(!show)} type="submit" className="w-1/2 text-myLightTheme-tpr rounded-lg shadow-xl border p-3 m-3 mt-12">Storno</button>
-                                        <button onClick={() => onSubmit()} type="button" className="rounded-lg font-bold bg-myLightTheme-sec text-myLightTheme-tpr shadow-xl border border-myLightTheme-cardbg p-3 m-3 mt-12 w-1/2">Uložit</button>
+                                    <div className={`flex justify-center w-full`}>
+                                        <button onClick={() => setShow(!show)} type="submit" className={`w-1/2 text-${theme}-tpr rounded-lg shadow-xl border p-3 m-3 mt-12`}>Storno</button>
+                                        <button onClick={() => onSubmit()} type="button" className={`rounded-lg font-bold bg-${theme}-sec text-white shadow-xl border border-${theme}-cardbg p-3 m-3 mt-12 w-1/2`}>Uložit</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
 import BarGraph from "../Components/BarGraph";
+import { ThemeContext } from "../Utilities/ThemeContext";
 import LineGraph from "../Components/LineGraph";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
@@ -10,6 +11,7 @@ import ArrivalsGraph from "../Components/ArrivalsGraph";
 const firebase = require('firebase');
 
 function DashboardComponent(props){
+    const { theme, setTheme } = React.useContext(ThemeContext);
     //props.usersData.
     //prichody tento rok, prichody celkove, posledni prichod
     const [content, setContent] = useState({thisYear: "", total: "", latest: ""});
@@ -61,11 +63,11 @@ function DashboardComponent(props){
             let tmpDate = element.date.getDate() + "/" + (element.date.getMonth() + 1);
             return (
                 <tr key={element.key}>
-                    <td className="border border-myLightTheme-ttern px-4 py-1 text-myLightTheme-tsec">{element.member}</td>
-                    <td className="border border-myLightTheme-ttern px-4 py-1 text-myLightTheme-tsec">{tmpDate}</td>
-                    <td className="border border-myLightTheme-ttern px-4 py-1">
+                    <td className={`border border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}>{element.member}</td>
+                    <td className={`border border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}>{tmpDate}</td>
+                    <td className={`border border-${theme}-ttern px-4 py-1`}>
                         <span>
-                            <FontAwesomeIcon role="img" aria-label="fntawsm" className="cursor-pointer text-myLightTheme-tsec hover:text-myLightTheme-pr" icon={ faTrashAlt } onClick={() => deleteLastArrival(element)} />
+                            <FontAwesomeIcon role="img" aria-label="fntawsm" className={`cursor-pointer text-${theme}-tsec hover:text-${theme}-pr`} icon={ faTrashAlt } onClick={() => deleteLastArrival(element)} />
                         </span>
                     </td>
                 </tr>
@@ -152,74 +154,74 @@ function DashboardComponent(props){
         Render
     */
     return (
-        <div>
+        <div className={`p-3 min-h-screen bg-${theme}-bg`}>
             {isLoading &&
-                <div className="flex justify-center mt-64 ">  
+                <div className={`flex justify-center mt-64`}>  
                     <LoadingSpinner/> 
                 </div>
             }
 
             {!isLoading &&
-                <div className="container mx-auto md:px-32">
-                    <div className="flex justify-center flex-wrap">
-                        <div className="w-full mb-12 sm:mb-12 md:mb-0">
-                            <h1 className="font-bold text-2xl text-center text-myLightTheme-tsec">Dashboard</h1>
+                <div className={`container mx-auto md:px-32`}>
+                    <div className={`flex justify-center flex-wrap`}>
+                        <div className={`w-full mb-12 sm:mb-12 md:mb-0 mt-5 sm:mt-5 md:mt-10`}>
+                            <h1 className={`font-bold text-2xl text-center text-${theme}-tsec`}>Dashboard</h1>
                         </div>
                         
-                        <div className="w-full flex justify-between flex-wrap mb-12 sm:mb-12 md:mb-0">
-                            <div className="w-1/3 sm:w-1/3 md:w-64 h-32 bg-myLightTheme-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center">
-                                <div className="w-full h-1 bg-magma-2"></div>
-                                <div className="pt-6 text-myLightTheme-tsec"> celkem </div>
-                                <div className="text-4xl font-bold text-myLightTheme-tpr"> {content.total} </div>
+                        <div className={`w-full flex justify-between flex-wrap mb-12 sm:mb-12 md:mb-0`}>
+                            <div className={`w-1/3 sm:w-1/3 md:w-64 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                                <div className={`w-full h-1 bg-magma-2`}></div>
+                                <div className={`pt-6 text-${theme}-tsec`}> celkem </div>
+                                <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.total} </div>
                             </div>
-                            <div className="w-1/3 sm:w-1/3 md:w-64 h-32 bg-myLightTheme-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center">
-                                <div className="w-full h-1 bg-magma-3"></div>
-                                <div className="pt-6 text-myLightTheme-tsec"> tento rok </div>
-                                <div className="text-4xl font-bold text-myLightTheme-tpr"> {content.thisYear} </div>
+                            <div className={`w-1/3 sm:w-1/3 md:w-64 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                                <div className={`w-full h-1 bg-magma-3`}></div>
+                                <div className={`pt-6 text-${theme}-tsec`}> tento rok </div>
+                                <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.thisYear} </div>
                             </div>
-                            <div className="w-1/3 sm:w-1/3 md:w-64 h-32 bg-myLightTheme-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center">
-                                <div className="w-full h-1 bg-magma-4"></div>
-                                <div className="pt-6 text-myLightTheme-tsec"> poslední </div>
-                                <div className="text-4xl font-bold text-myLightTheme-tpr"> {content.latest} </div>
+                            <div className={`w-1/3 sm:w-1/3 md:w-64 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                                <div className={`w-full h-1 bg-magma-4`}></div>
+                                <div className={`pt-6 text-${theme}-tsec`}> poslední </div>
+                                <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.latest} </div>
                             </div>
                         </div>
 
                         {/* Příchody */}
-                        <div className="w-full mb-2 sm:mb-2 md:mb-0">
-                            <h1 className="font-bold text-2xl text-center text-myLightTheme-tsec">Příchody</h1>
-                            <h3 className="text-center text-myLightTheme-tsec">V grafu níže lze pozorovat měsíční srovnání příchodů v jednotlivých letech.</h3>
+                        <div className={`w-full mb-2 sm:mb-2 md:mb-0`}>
+                            <h1 className={`font-bold text-2xl text-center text-${theme}-tsec`}>Příchody</h1>
+                            <h3 className={`text-center text-${theme}-tsec`}>V grafu níže lze pozorovat měsíční srovnání příchodů v jednotlivých letech.</h3>
                         </div>
 
                         {/* Linechart */}
-                        <div className="w-full h-40 sm:h-40 md:h-64 p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-0">
-                            <div className="w-full h-40 sm:h-40 md:h-64 bg-myLightTheme-cardbg rounded shadow-xl text-center" >
+                        <div className={`w-full h-40 sm:h-40 md:h-64 p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-0`}>
+                            <div className={`w-full h-40 sm:h-40 md:h-64 bg-${theme}-cardbg rounded shadow-xl text-center`} >
                                 <LineGraph categories={lineGraphContent}/>
                             </div>
                         </div>
 
-                        <div className="w-full flex justify-center flex-wrap mb-1 sm:mb-1 md:mt-12">
+                        <div className={`w-full flex justify-center flex-wrap mb-1 sm:mb-1 md:mt-12`}>
                             {/* Barchart */}
-                            <div className="w-full sm:w-full md:w-3/5 h-64 p-1 sm:p-1 md:p-6 mt-2 sm:mt-2 md:mt-0 mb-16 sm:mb-16 md:mb-0">
-                                <div className="w-full">
-                                    <h3 className="text-center text-myLightTheme-tsec mb-2 ">Příchody jednotlivých členů</h3>
+                            <div className={`w-full sm:w-full md:w-3/5 h-64 p-1 sm:p-1 md:p-6 mt-2 sm:mt-2 md:mt-0 mb-16 sm:mb-16 md:mb-0`}>
+                                <div className={`w-full`}>
+                                    <h3 className={`text-center text-${theme}-tsec mb-2`}>Příchody jednotlivých členů</h3>
                                 </div>
-                                <div className="w-full h-64 bg-myLightTheme-cardbg rounded shadow-xl p-2 text-center">
+                                <div className={`w-full h-64 bg-${theme}-cardbg rounded shadow-xl p-2 text-center`}>
                                     <BarGraph arrivals={barGraphContent}/>
                                 </div>
                             </div>
 
-                            <div className="w-full sm:w-full md:w-2/5 h-64 p-1 sm:p-1 md:p-6 mt-2 sm:mt-2 md:mt-0 mb-12 sm:mb-12 md:mb-0">
-                                <div className="w-full">
-                                    <h3 className="text-center text-myLightTheme-tsec mb-2">Poslední příchody</h3>
+                            <div className={`w-full sm:w-full md:w-2/5 h-64 p-1 sm:p-1 md:p-6 mt-2 sm:mt-2 md:mt-0 mb-12 sm:mb-12 md:mb-0`}>
+                                <div className={`w-full`}>
+                                    <h3 className={`text-center text-${theme}-tsec mb-2`}>Poslední příchody</h3>
                                 </div>
-                                <div className="w-full h-64 bg-myLightTheme-cardbg rounded shadow-xl p-2 text-center">
-                                    <table className="w-full table-auto text-center py-2 h-56">
+                                <div className={`w-full h-64 bg-${theme}-cardbg rounded shadow-xl p-2 text-center`}>
+                                    <table className={`w-full table-auto text-center py-2 h-56`}>
                                             <thead>
                                                 <tr>
                                                     {/* TODO: overflow a dát jich tam třeba 15 aby to bylo scrollable */}
-                                                    <th className="px-4 py-1 text-myLightTheme-tpr font-normal">Uživatel</th>
-                                                    <th className="px-4 py-1 text-myLightTheme-tpr font-normal">Příchod</th>
-                                                    <th className="px-4 py-1 text-myLightTheme-tpr"></th>
+                                                    <th className={`px-4 py-1 text-${theme}-tpr font-normal`}>Uživatel</th>
+                                                    <th className={`px-4 py-1 text-${theme}-tpr font-normal`}>Příchod</th>
+                                                    <th className={`px-4 py-1 text-${theme}-tpr`}></th>
                                                 </tr>
                                             </thead>
                                         <tbody>
@@ -232,11 +234,11 @@ function DashboardComponent(props){
 
                         
                         {/* ArrivalsGraph */}
-                        <div className="w-full p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-12 mt-5 sm:mt-5 md:mt-20">
-                            <div className="w-full">
-                                <h3 className="text-center text-myLightTheme-tsec mb-2">Heat mapa příchodů pro nynější rok</h3>
+                        <div className={`w-full p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-12 mt-5 sm:mt-5 md:mt-20`}>
+                            <div className={`w-full`}>
+                                <h3 className={`text-center text-${theme}-tsec mb-2`}>Heat mapa příchodů pro nynější rok</h3>
                             </div>
-                            <div className="w-full bg-myLightTheme-cardbg rounded shadow-xl text-center" >
+                            <div className={`w-full bg-${theme}-cardbg rounded shadow-xl text-center`}>
                                 <ArrivalsGraph usersData={props.usersData}/>
                             </div>
                         </div>

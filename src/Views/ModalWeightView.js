@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Members from "../Helpfiles/Members";
 import Notification from "../Components/Notification";
+import { ThemeContext } from "../Utilities/ThemeContext";
 
 const firebase = require('firebase');
 
 function ModalWeightView(props){
+    const { theme, setTheme } = React.useContext(ThemeContext);
 
     const [selectedUser, setSelectedUser] = useState("dudu");
     const [inputWeight, setInputWeight] = useState(70);
@@ -70,24 +72,24 @@ function ModalWeightView(props){
 
     return (
         <div>
-            <h2 className="font-bold mt-5 mb-5 text-myLightTheme-tsec">Vyber se, zadej svou váhu a poté ulož změny.</h2>
-            <select className="bg-myLightTheme-cardbg text-myLightTheme-tpr text-xl p-2 cursor-pointer" name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
+            <h2 className={`font-bold mt-5 mb-5 text-${theme}-tsec`}>Vyber se, zadej svou váhu a poté ulož změny.</h2>
+            <select className={`bg-${theme}-cardbg text-${theme}-tpr text-xl p-2 cursor-pointer`} name="members" id="memberSelector" onChange={(e) => onSelectChangeHandle(e)}>
                 {options}
             </select>
 
-            <div className="mt-5">
-                <input className="font-bold text-4xl bg-myLightTheme-cardbg text-myLightTheme-tpr text-center" type="number" id="weightInput" name="weight" min="65" max="100" step="0.1" value={inputWeight} onChange={(e) => onInputHandle(e)}>
+            <div className={`mt-5`}>
+                <input className={`font-bold text-4xl bg-${theme}-cardbg text-${theme}-tpr text-center`} type=" number" id="weightInput" name="weight" min="65" max="100" step="0.1" value={inputWeight} onChange={(e) => onInputHandle(e)}>
                 </input>
             </div>
 
             <div>
-                <input className="w-full sm:w-full lg:w-64 mt-5 bg-myLightTheme-cardbg cursor-pointer" type="range" id="points" name="points" min="65" max="110" value={inputWeight} onChange={(e) => onInputHandle(e)} step="0.1">
+                <input className={`w-full sm:w-full lg:w-64 mt-5 bg-${theme}-cardbg cursor-pointer`} type="range" id="points" name="points" min="65" max="110" value={inputWeight} onChange={(e) => onInputHandle(e)} step="0.1">
                 </input>
             </div>
 
-            <div className="flex justify-center flex-wrap">
-                <button onClick={() => props.submitHandler()} type="button" className="w-32 rounded-lg text-myLightTheme-tpr shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Zrušit</button>
-                <button onClick={() => onSubmit()} type="submit" className="rounded-lg font-bold bg-myLightTheme-sec text-myLightTheme-tpr shadow-xl border border-myLightTheme-cardbg px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12">Uložit změny</button>
+            <div className={`flex justify-center flex-wrap`}>
+                <button onClick={() => props.submitHandler()} type="button" className={`w-32 rounded-lg text-${theme}-tpr shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}>Zrušit</button>
+                <button onClick={() => onSubmit()} type="submit" className={`rounded-lg font-bold bg-${theme}-sec text-white shadow-xl border border-${theme}-cardbg px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}>Uložit změny</button>
             </div>
 
         </div>

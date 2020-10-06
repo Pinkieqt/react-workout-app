@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-
+import { ThemeContext } from "../Utilities/ThemeContext";
 import LoadingSpinner from "../Components/LoadingSpinner";
 import Exercises from "../Helpfiles/Exercises";
 import Members from "../Helpfiles/Members";
 import FloatingDialog from "../Components/FloatingDialog";
 
 function RecordsComponent(props){
+    const { theme, setTheme } = React.useContext(ThemeContext);
     
     const [selectedUser, setSelectedUser] = useState("dudu");
     const [isLoading, setIsLoading] = useState(true);
@@ -50,16 +51,16 @@ function RecordsComponent(props){
             else if (exercise.category === "arms") tableDesign = "bg-green-300";
 
             return (
-                <div key={exercise.key} className={`w-full sm:w-full md:w-56 bg-myLightTheme-cardbg rounded-lg shadow-lg m-1 sm:m-1 md:m-5 mb-5 text-left`}>
+                <div key={exercise.key} className={`w-full sm:w-full md:w-56 bg-${theme}-cardbg rounded-lg shadow-lg m-1 sm:m-1 md:m-5 mb-5 text-left`}>
                     <div className={`w-full h-1 rounded-full ${tableDesign}`}></div>
-                    <span className="flex justify-between px-3 pt-2">
-                        <span className={`tracking-wider inline-block text-myLightTheme-cardbg text-xs px-2 mt-2 rounded-full uppercase  ${tableDesign}`}> {exercise.kategorie} </span>
+                    <span className={`flex justify-between px-3 pt-2`}>
+                        <span className={`tracking-wider inline-block text-${theme}-cardbg text-xs px-2 mt-2 rounded-full uppercase  ${tableDesign}`}> {exercise.kategorie} </span>
                         <FloatingDialog usersData={props.usersData} selectedUser={selectedUser} exercise={exercise.key} exMax={max} exWork={work} />
                     </span>
-                    <div className="px-6 pb-6 mt-2">
-                        <div className="font-bold text-myLightTheme-tpr"> {exercise.label} </div>
-                        <div className="text-myLightTheme-tsec"> Pracovní váha: {work} kg</div>
-                        <div className="text-myLightTheme-tsec"> Maximální váha: {max} kg</div>
+                    <div className={`px-6 pb-6 mt-2`}>
+                        <div className={`font-bold text-${theme}-tpr`}> {exercise.label} </div>
+                        <div className={`text-${theme}-tsec`}> Pracovní váha: {work} kg</div>
+                        <div className={`text-${theme}-tsec`}> Maximální váha: {max} kg</div>
                     </div>
                 </div>
             );
@@ -75,27 +76,28 @@ function RecordsComponent(props){
 
 
     return (
-        
-        <div className="items-center text-center">
-            {isLoading &&
-                <div className="flex justify-center mt-64 ">  
-                    <LoadingSpinner/> 
-                </div>
-            }
-
-            {!isLoading &&
-                <div className="container mx-auto">
-                    <span>
-                        <h3 className="text-myLightTheme-tsec mb-5">Vyber uživatele a uprav váhy kliknutím na ikonu "editace" v pravém rohu každého cviku.</h3>
-                    </span>
-                    <select className="text-myLightTheme-tpr bg-myLightTheme-bg text-xl p-2 mb-5 cursor-pointer" name="members" id="memberSelector" onChange={(e) => setSelectedUser(e.target.value)}>
-                        {options}
-                    </select>
-                    <div className="flex justify-center flex-wrap">
-                        {cards}
+        <div className={`p-3 min-h-screen bg-${theme}-bg`}>
+            <div className={`items-center text-center`}>
+                {isLoading &&
+                    <div className={`flex justify-center mt-64`}>  
+                        <LoadingSpinner/> 
                     </div>
-                </div>
-            }
+                }
+
+                {!isLoading &&
+                    <div className={`container mx-auto`}>
+                        <span>
+                            <h3 className={`text-${theme}-tsec mb-5 mt-5 sm:mt-5 md:mt-10`}>Vyber uživatele a uprav váhy kliknutím na ikonu "editace" v pravém rohu každého cviku.</h3>
+                        </span>
+                        <select className={`text-${theme}-tpr bg-${theme}-bg text-xl p-2 mb-5 cursor-pointer`} name="members" id="memberSelector" onChange={(e) => setSelectedUser(e.target.value)}>
+                            {options}
+                        </select>
+                        <div className={`flex justify-center flex-wrap`}>
+                            {cards}
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     )
 }

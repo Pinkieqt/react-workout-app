@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
+import { ThemeContext } from "../Utilities/ThemeContext";
 
 function ArrivalsGraph(props){
+    const { theme, setTheme } = React.useContext(ThemeContext);
 
     const [tableContent, setTableContent] = useState([])
 
@@ -47,7 +49,7 @@ function ArrivalsGraph(props){
     
     const content = tableContent.map(el => {
         let tmp = Object.values(el)[0]
-        let dotStyle = "bg-myLightTheme-ttern"; //default
+        let dotStyle = "bg-" + theme + "-ttern"; //default
 
         if (tmp === 1) dotStyle = "bg-magma-2";
         else if (tmp === 2) dotStyle = "bg-magma-3";
@@ -62,15 +64,15 @@ function ArrivalsGraph(props){
 
     return (
         <div>
-            <div className="w-full flex flex-wrap justify-evenly p-2 pt-3">
-                <h6 className="text-myLightTheme-tsec"><div className="w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-myLightTheme-ttern"></div>0</h6>
-                <h6 className="text-myLightTheme-tsec"><div className="w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-1"></div>1</h6>
-                <h6 className="text-myLightTheme-tsec"><div className="w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-2"></div>2</h6>
-                <h6 className="text-myLightTheme-tsec"><div className="w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-3"></div>3</h6>
-                <h6 className="text-myLightTheme-tsec"><div className="w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-4"></div>4</h6>
-                <h6 className="text-myLightTheme-tsec"><div className="w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-5"></div>5</h6>
+            <div className={`w-full flex flex-wrap justify-evenly p-2 pt-3`}>
+                <h6 className={`text-${theme}-tsec`}><div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-${theme}-ttern`}></div>0</h6>
+                <h6 className={`text-${theme}-tsec`}><div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-1`}></div>1</h6>
+                <h6 className={`text-${theme}-tsec`}><div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-2`}></div>2</h6>
+                <h6 className={`text-${theme}-tsec`}><div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-3`}></div>3</h6>
+                <h6 className={`text-${theme}-tsec`}><div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-4`}></div>4</h6>
+                <h6 className={`text-${theme}-tsec`}><div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-5`}></div>5</h6>
             </div>
-            <div className="w-full flex flex-wrap justify-center p-2">
+            <div className={`w-full flex flex-wrap justify-center p-2`}>
                 {content}
             </div>
         </div>

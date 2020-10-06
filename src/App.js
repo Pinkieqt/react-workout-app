@@ -37,20 +37,20 @@ function App() {
 
   return (
     <ThemeContext>
-      <div className="App font-robot">
+      <div className={`App font-robot`}>
         <Router>
-          <div className="flex flex-col bg-myLightTheme-bg ">
+          <div className={`flex flex-col`}>
             <Header usersData={usersData}/>
-            <div className="p-3 min-h-screen bg-myLightTheme-bg">
+            {/* <div className={`p-3 min-h-screen bg-myLightTheme-bg`}> */}
               <Switch>
                 <Route exact path="/"> <DashboardComponent usersData={usersData}/> </Route>
                 <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>
                 <Route path="/records"> <RecordsComponent usersData={usersData}/> </Route>
                 <Route path="/plans"> <PlansComponent usersData={usersData}/> </Route>
               </Switch>          
-            </div>
+            {/* </div> */}
 
-            <Footer className="mt-12 sm:mt-12 md:mt-0"/>
+            <Footer className={`mt-12 sm:mt-12 md:mt-0`}/>
 
             <ToastContainer
               position="bottom-right"

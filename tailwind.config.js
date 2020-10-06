@@ -14,17 +14,17 @@ module.exports = {
         'secondary': '#f75a48'
       },
       colors: {
-        "myDarkTheme": {
+        "myLightTheme": {
           "pr": "#1B1A34", //primary
           "sec": "#FF5260", //secondary
           "tpr": "#1B1A34", //text primary
           "tsec": "#67677D", //text secondary
-          "ttern": "#67677D",
+          "ttern": "#e8e8e8",
           "bg": "#F7F8FC",
           "cardbg": "#ffffff",
           "footerbg": "#1B1A34"
         },
-        "myLightTheme": {
+        "myDarkTheme": {
           "pr": "#d0d0d3", //primary
           "sec": "#FF5260", //secondary
           "tpr": "#e0e0e0", //text primary

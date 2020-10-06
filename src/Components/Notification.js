@@ -19,7 +19,7 @@ function Notification(text, isError){
         toast.error(`😢 ${text}`, {notificationStyle});
     }
     else {
-        toast(`🤞 ${text}`, {notificationStyle});
+        toast.dark(`🤞 ${text}`, {notificationStyle});
     }
     
 }
