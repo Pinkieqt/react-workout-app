@@ -21,7 +21,7 @@ function ModalArrivalView(props){
     const [renderFix, setRenderFix] = useState(false);
 
     //Buttons with members
-    let checkedButton = "bg-magma-1 border border-${theme}-sec text-white w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    let checkedButton = "bg-magma-1 border border-${theme}-sec text-black w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
     let uncheckedButton = "text-" + theme + "-tpr border w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
 
     let checkboxItems = Members.map((item) => 

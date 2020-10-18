@@ -51,11 +51,11 @@ function ArrivalsGraph(props){
         let tmp = Object.values(el)[0]
         let dotStyle = "bg-" + theme + "-ttern"; //default
 
-        if (tmp === 1) dotStyle = "bg-magma-2";
-        else if (tmp === 2) dotStyle = "bg-magma-3";
-        else if (tmp === 3) dotStyle = "bg-magma-4";
-        else if (tmp === 4) dotStyle = "bg-magma-5";
-        else if (tmp === 5) dotStyle = "bg-magma-6";
+        if (tmp === 1) dotStyle = "bg-magma-1";
+        else if (tmp === 2) dotStyle = "bg-magma-2";
+        else if (tmp === 3) dotStyle = "bg-magma-3";
+        else if (tmp === 4) dotStyle = "bg-magma-4";
+        else if (tmp === 5) dotStyle = "bg-magma-5";
 
         return (
             <div className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 ${dotStyle}`} key={Object.keys(el)[0]}></div>
