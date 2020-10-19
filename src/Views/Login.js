@@ -3,6 +3,7 @@ import { ThemeContext } from "../Utilities/ThemeContext";
 import { UserContext } from "../App";
 import TopLoginDesign from "../Graphics/TopLoginDesign"
 import BottomLoginDesign from "../Graphics/BottomLoginDesign"
+import Top from '../Graphics/icon.png';
 
 const firebase = require('firebase');
 
