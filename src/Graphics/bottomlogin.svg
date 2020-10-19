@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1145" height="715.34" viewBox="0 0 1145 715.34">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+        fill: url(#linear-gradient);
+        filter: url(#filter);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect x="-775.5" y="-297.33" width="1920" height="1080"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="911.906" y1="1037.634" x2="1920" y2="407.706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fa709a"/>
+      <stop offset="1" stop-color="#ffec85"/>
+    </linearGradient>
+    <filter id="filter" x="776" y="230" width="1280" height="987" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="11.662"/>
+      <feFlood result="flood" flood-opacity="0.18"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g clip-path="url(#clip-path)">
+    <path id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-1" d="M1920,365s-59.94,129.432-170.27,168.616S1555.61,573.323,1465.87,682.8s-107.51,183.509-252.45,202.945S926.065,1080,912,1080c-11.306,0,1006.94.33,1006.94,0.33ZM1407.4,621.248" transform="translate(-775.5 -297.33)"/>
+  </g>
+</svg>

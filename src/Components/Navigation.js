@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTint } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTint, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useTransition, animated } from 'react-spring'
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { ThemeContext } from "../Utilities/ThemeContext";
+import { UserContext } from '../App';
+
+const firebase = require('firebase');
 
 function Navigation(){
     //Theme changing
     const { theme, setTheme } = React.useContext(ThemeContext);
+    const { loggedUser, setLoggedUser } = React.useContext(UserContext);
     const changeTheme = () => {
         if (theme === "myLightTheme") {
             setTheme("myDarkTheme")
@@ -38,6 +42,18 @@ function Navigation(){
         enter: { opacity: 1, transform: "translateX(0%)" },
         leave: { opacity: 0, transform: "translateX(-100%)" },
     })
+
+    function signOut(){
+        firebase
+        .auth()
+        .signOut()
+        .then(res => {
+            setLoggedUser(null);
+        })
+        .catch(e => {
+            setLoggedUser(null);
+        })
+    }
 
     return (
         <nav>
@@ -87,6 +103,12 @@ function Navigation(){
                                             <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faTint }/>
                                         </span>
                                     </li>
+                                    <li className={`py-3 block text-xl`} onClick={() => signOut()} >
+                                        <span className={`text-xl text-${theme}-pr cursor-pointer`}>
+                                            Odhlásit&nbsp; &nbsp;
+                                            <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faSignOutAlt }/>
+                                        </span>
+                                    </li>
                                 </ul>
                             </animated.div>
                         )
@@ -103,7 +125,12 @@ function Navigation(){
                     <NavLink to="/records" activeClassName={navlinkStyle} className={`inline p-3 text-${theme}-pr`}>Maximálky</NavLink>
                     <li className={`inline p-3`}> 
                         <span className={`text-xl text-${theme}-pr cursor-pointer`}>
-                            <FontAwesomeIcon role="img" aria-label="fntawsm" icon={ faTint } onClick={() => changeTheme()} />
+                            <FontAwesomeIcon role="img" aria-label="Theme" icon={ faTint } onClick={() => changeTheme()} />
+                        </span>
+                    </li>
+                    <li className={`inline p-3`}> 
+                        <span className={`text-xl text-${theme}-pr cursor-pointer`}>
+                            <FontAwesomeIcon role="img" aria-label="Logout" icon={ faSignOutAlt } onClick={() => signOut()} />
                         </span>
                     </li>
                 </div>
