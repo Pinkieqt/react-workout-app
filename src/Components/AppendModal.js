@@ -22,9 +22,9 @@ function AppendModal(method_props){
     })
 
     const menuTransition = useTransition(show, null, {
-        from: { opacity: 0, transform: "translateY(-100%)" },
-        enter: { opacity: 1, transform: "translateY(0%)" },
-        leave: { opacity: 0, transform: "translateY(-100%)" },
+        from: { opacity: 0, transform: "translate3d(0,-40px,0)" },
+        enter: { opacity: 1, transform: "translate3d(0,0px,0)" },
+        leave: { opacity: 0, transform: "translate3d(0,-40px,0)" },
     })
 
     //Handler to dismiss modal

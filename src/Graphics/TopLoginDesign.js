@@ -3,7 +3,7 @@ import Top from './toplogin.svg';
 
 function TopLoginDesing(){
     return(
-        <img src={Top} alt="React Logo" className="w-64" />
+        <img src={Top} alt="React Logo"/>
     )
 }
 

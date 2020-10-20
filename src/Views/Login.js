@@ -57,9 +57,15 @@ function LoginComponent(){
     }
 
     return (
-        <div className={`w-screen h-screen bg-${theme}-bg`}>
-            <div className={`flex justify-center z-50`}>
-                <div className={`w-4/5 sm:w-4/5 md:w-64 text-center mt-48 sm:mt-48 md:mt-64`}>
+        <div className={`w-screen h-screen`}>
+            <div className="absolute top-0 left-0 w-3/5 sm:w-3/5 md:w-2/5 z-10">
+                <TopLoginDesign/>
+            </div>
+            <div className="absolute bottom-0 right-0 w-3/5 sm:w-3/5 md:w-2/5 z-10">
+                <BottomLoginDesign/>
+            </div>
+            <div className={`flex justify-center w-screen h-screen bg-${theme}-bg`}>
+                <div className={`w-4/5 sm:w-4/5 md:w-64 text-center mt-40 sm:mt-40 md:mt-64 z-30`}>
                     <h1 className={`text-4xl text-${theme}-tpr m-5`}>Přihlášení</h1>
                     <h6 className={`text-${theme}-tsec`}>Zadej heslo:</h6>
                     <input className={`rounded-full text-${theme}-tsec bg-${theme}-cardbg border border-${theme}-ttern p-2 m-1`} type="password" onChange={(e) => inputHandle(e)} onKeyDown={(e) => enterKey(e)}></input>

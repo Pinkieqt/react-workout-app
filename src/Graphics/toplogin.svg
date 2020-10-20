@@ -1,17 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="893.688" height="664.5" viewBox="0 0 893.688 664.5">
-  <defs>
-    <style>
-      .cls-1 {
-        stroke: #fff;
-        stroke-width: 1px;
-        fill-rule: evenodd;
-        fill: url(#linear-gradient);
-      }
-    </style>
-    <linearGradient id="linear-gradient" x1="-4.594" y1="609.123" x2="893.188" y2="48.127" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fa709a"/>
-      <stop offset="1" stop-color="#ffec85"/>
-    </linearGradient>
-  </defs>
-  <path class="cls-1" d="M-4,664s-14.042-99.858,95.133-142.137S284.063,476.7,370.678,364.736,472.974,178.269,617.3,154.755,879.015-4.5,893-6C908.637-7.675-3-6-3-6ZM430.864,424.616"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="702.517" height="416.816" viewBox="0 0 702.517 416.816"><defs><linearGradient id="a" x1="0.459" y1="0.71" x2="0.853" y2="0.87" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#ff82a0"/><stop offset="1" stop-color="#ffb37a"/></linearGradient><linearGradient id="b" y1="-0.082" x2="0.869" y2="0.94" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#ff7e89"/><stop offset="1" stop-color="#ffc9b1"/></linearGradient></defs><g transform="translate(-0.28)"><path d="M692.136,0s39.745,45.633-61.826,123.651S424.226,173.7,384.481,310.6-1.192,256.134-1.192,256.134V0Z" transform="translate(3)" fill="url(#a)"/><path d="M0,273.607s49.755,93.769,156.919,135.869,55.5-110.991,137.782-128.214S453.534,135.824,497.548,84.156,629.412.19,629.412.19H0Z" transform="translate(0.28 0.045)" fill="url(#b)"/></g></svg>
