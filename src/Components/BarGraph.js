@@ -3,8 +3,6 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 
 function BarGraph(props){
 
-    let barColor = "bg-secondary"
-
     return (
         <ResponsiveContainer width="100%">
             <BarChart

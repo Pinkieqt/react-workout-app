@@ -14,7 +14,7 @@ function DashboardComponent(props){
     const { theme, setTheme } = React.useContext(ThemeContext);
     //props.usersData.
     //prichody tento rok, prichody celkove, posledni prichod
-    const [content, setContent] = useState({thisYear: "", total: "", latest: ""});
+    const [content, setContent] = useState({thisYear: "", total: "", latest: "", monthDiffer: ""});
     const [arrivalsTableContent, setArrivalsTableContent] = useState();
     const [barGraphContent, setBarGraphContent] = useState([]);
     const [lineGraphContent, setLineGraphContent] = useState({});
@@ -25,6 +25,8 @@ function DashboardComponent(props){
         let thisYear = 0;
         let total = 0;
         let latest = 0;
+        let monthLastYear = 0;
+        let monthThisYear = 1;
 
         let latestArrivals = [];
         let barGraphData = [];
@@ -35,9 +37,12 @@ function DashboardComponent(props){
 
             user.arrivals.forEach(arrival => {
                 //Counting
-                total = total + 1;
+                total++;
+                let nDate = new Date();
+                if (arrival.toDate().getYear() === nDate.getYear()) thisYear++;
 
-                if (arrival.toDate().getYear() === new Date().getYear()) thisYear++;
+                if (arrival.toDate().getYear() === nDate.getYear()-1 && arrival.toDate().getMonth() === nDate.getMonth()) monthLastYear++;
+                if (arrival.toDate().getYear() === nDate.getYear() && arrival.toDate().getMonth() === nDate.getMonth()) monthThisYear++;
 
                 if (arrival > latest) latest = arrival;
 
@@ -79,7 +84,7 @@ function DashboardComponent(props){
 
         setArrivalsTableContent(latestArrivals);
         setBarGraphContent(barGraphData);
-        setContent({thisYear: thisYear, total: total, latest: date});
+        setContent({thisYear: thisYear, total: total, latest: date, monthDiffer: monthThisYear - monthLastYear});
     }
 
     //function to delete last arrival
@@ -167,21 +172,25 @@ function DashboardComponent(props){
                         <div className={`w-full mb-12 sm:mb-12 md:mb-0 mt-5 sm:mt-5 md:mt-10`}>
                             <h1 className={`font-bold text-2xl text-center text-${theme}-tsec`}>Dashboard</h1>
                         </div>
-                        
                         <div className={`w-full flex justify-between flex-wrap mb-12 sm:mb-12 md:mb-0`}>
-                            <div className={`w-1/3 sm:w-1/3 md:w-64 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
-                                <div className={`w-full h-1 bg-magma-2`}></div>
+                            <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                                <div className={`w-full h-1 bg-magma-1`}></div>
                                 <div className={`pt-6 text-${theme}-tsec`}> celkem </div>
                                 <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.total} </div>
                             </div>
-                            <div className={`w-1/3 sm:w-1/3 md:w-64 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                            <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                                <div className={`w-full h-1 bg-magma-2`}></div>
+                                <div className={`pt-6 text-${theme}-tsec`}> rozdíl příchodů </div>
+                                <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.monthDiffer} </div>
+                            </div>
+                            <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
                                 <div className={`w-full h-1 bg-magma-3`}></div>
                                 <div className={`pt-6 text-${theme}-tsec`}> tento rok </div>
                                 <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.thisYear} </div>
                             </div>
-                            <div className={`w-1/3 sm:w-1/3 md:w-64 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
+                            <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 bg-${theme}-cardbg rounded shadow-xl m-0 sm:m-0 md:m-6 text-center`}>
                                 <div className={`w-full h-1 bg-magma-4`}></div>
-                                <div className={`pt-6 text-${theme}-tsec`}> poslední </div>
+                                <div className={`pt-6 text-${theme}-tsec`}> poslední příchod</div>
                                 <div className={`text-4xl font-bold text-${theme}-tpr`}> {content.latest} </div>
                             </div>
                         </div>

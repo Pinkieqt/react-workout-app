@@ -46,7 +46,7 @@ function ArrivalsGraph(props){
 
         setTableContent(result);
     }
-    
+
     const content = tableContent.map(el => {
         let tmp = Object.values(el)[0]
         let dotStyle = "bg-" + theme + "-ttern"; //default
