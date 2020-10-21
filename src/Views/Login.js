@@ -11,6 +11,7 @@ function LoginComponent(){
     const { theme, setTheme } = React.useContext(ThemeContext);
     const { loggedUser, setLoggedUser } = React.useContext(UserContext);
 
+    const [stayLogged, setStayLogged]= useState(false);
     const [wrongPass, setWrongPass] = useState(false)
     const [pass, setPass] = useState("")
 
@@ -19,19 +20,24 @@ function LoginComponent(){
     }
 
     function login(){
-        firebase
-        .auth()
-        .signInWithEmailAndPassword("ezworkout@ezworkout.ez", pass)
-        .then(res => {
-            if (res.user) {
-                setLoggedUser("ss");
-                setWrongPass(false);
-            }
-        })
-        .catch(e => {
-            console.log(e.message);
-            setWrongPass(true);
-        });
+        if (stayLogged){
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+                return firebase.auth().signInWithEmailAndPassword("ezworkout@ezworkout.ez", pass);
+            })
+            .catch(e => {
+                console.log(e.message)
+                setWrongPass(true);
+            })
+        }
+        else {
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).then(() => {
+                return firebase.auth().signInWithEmailAndPassword("ezworkout@ezworkout.ez", pass);
+            })
+            .catch(e => {
+                console.log(e.message)
+                setWrongPass(true);
+            })
+        }
     }
 
     function enterKey(e){
@@ -40,24 +46,12 @@ function LoginComponent(){
         }
     }
 
-    function login2(){
-        firebase
-        .auth()
-        .signInWithEmailAndPassword("guest@ezworkout.ez", "guestez")
-        .then(res => {
-            if (res.user) {
-                setWrongPass(false);
-                setLoggedUser("ss");
-            }
-        })
-        .catch(e => {
-            setWrongPass(true);
-            console.log(e.message)
-        });
+    function handleCheckboxChange(e){
+        setStayLogged(e.target.checked)
     }
 
     return (
-        <div className={`w-screen h-screen`}>
+        <div className={`w-screen h-full`}>
             <div className="absolute top-0 left-0 w-3/5 sm:w-3/5 md:w-2/5 z-10">
                 <TopLoginDesign/>
             </div>
@@ -75,6 +69,11 @@ function LoginComponent(){
                         :
                             <h6></h6>
                     }
+
+                    <div className="w-full sm:w-full md:w-64">
+                        <input type="checkbox" onChange={(e) => handleCheckboxChange(e)}/>
+                        <label className={`text-${theme}-tsec`}> Zůstat přihlášen?</label>
+                    </div>
                     
                     <button className={`w-32 rounded-full bg-${theme}-sec text-white shadow-xl border border-${theme}-cardbg p-1 px-3 m-3 mt-5 sm:mt-5 md:mt-12`} type="submit" onClick={() => login()}>Přihlásit</button>
                     {/* <button className="bg-red-300" onClick={() => login2()}>guest</button> */}
