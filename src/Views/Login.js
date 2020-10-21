@@ -51,32 +51,34 @@ function LoginComponent(){
     }
 
     return (
-        <div className={`w-screen h-full`}>
+        <div className={`w-screen h-full max-h-full overflow-hidden`}>
             <div className="absolute top-0 left-0 w-3/5 sm:w-3/5 md:w-2/5 z-10">
                 <TopLoginDesign/>
             </div>
-            <div className="absolute bottom-0 right-0 w-3/5 sm:w-3/5 md:w-2/5 z-10">
+            <div className="fixed bottom-0 right-0 w-3/5 sm:w-3/5 md:w-2/5 z-10">
                 <BottomLoginDesign/>
             </div>
-            <div className={`flex justify-center w-screen h-screen bg-${theme}-bg`}>
-                <div className={`w-4/5 sm:w-4/5 md:w-64 text-center mt-40 sm:mt-40 md:mt-64 z-30`}>
-                    <h1 className={`text-4xl text-${theme}-tpr m-5`}>Přihlášení</h1>
-                    <h6 className={`text-${theme}-tsec`}>Zadej heslo:</h6>
-                    <input className={`rounded-full text-${theme}-tsec bg-${theme}-cardbg border border-${theme}-ttern p-2 m-1`} type="password" onChange={(e) => inputHandle(e)} onKeyDown={(e) => enterKey(e)}></input>
-                    {
-                        wrongPass === true ?
-                            <h6 className={`text-magma-3`}>Špatné heslo</h6>
-                        :
-                            <h6></h6>
-                    }
+            <div className={`flex justify-center w-screen h-screen text-center bg-${theme}-bg`}>
+                <div className="m-auto">
+                    <div className={`w-full sm:w-full md:w-64 text-center z-30`}>
+                        <h1 className={`text-4xl text-${theme}-tpr m-5`}>Přihlášení</h1>
+                        <h6 className={`text-${theme}-tsec`}>Zadej heslo:</h6>
+                        <input className={`rounded-full text-${theme}-tsec bg-${theme}-cardbg border border-${theme}-ttern p-2 m-1`} type="password" onChange={(e) => inputHandle(e)} onKeyDown={(e) => enterKey(e)}></input>
+                        {
+                            wrongPass === true ?
+                                <h6 className={`text-magma-3`}>Špatné heslo</h6>
+                            :
+                                <h6></h6>
+                        }
 
-                    <div className="w-full sm:w-full md:w-64">
-                        <input type="checkbox" onChange={(e) => handleCheckboxChange(e)}/>
-                        <label className={`text-${theme}-tsec`}> Zůstat přihlášen?</label>
+                        <div className="w-full sm:w-full md:w-64">
+                            <input type="checkbox" onChange={(e) => handleCheckboxChange(e)}/>
+                            <label className={`text-${theme}-tsec`}> Zůstat přihlášen?</label>
+                        </div>
+                        
+                        <button className={`w-32 rounded-full bg-${theme}-sec text-white shadow-xl border border-${theme}-cardbg p-1 px-3 m-3 mt-5 sm:mt-5 md:mt-12`} type="submit" onClick={() => login()}>Přihlásit</button>
+                        {/* <button className="bg-red-300" onClick={() => login2()}>guest</button> */}
                     </div>
-                    
-                    <button className={`w-32 rounded-full bg-${theme}-sec text-white shadow-xl border border-${theme}-cardbg p-1 px-3 m-3 mt-5 sm:mt-5 md:mt-12`} type="submit" onClick={() => login()}>Přihlásit</button>
-                    {/* <button className="bg-red-300" onClick={() => login2()}>guest</button> */}
                 </div>
             </div>
         </div>

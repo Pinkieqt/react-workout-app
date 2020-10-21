@@ -13,10 +13,12 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
     const [show, setShow] = useState(false);
     const [max, setMax] = useState(0);
     const [work, setWork] = useState(0);
+    const [label, setLabel] = useState("");
 
     useEffect(() => {
         setMax(props.exMax);
         setWork(props.exWork);
+        setLabel(props.exlabel);
     }, [props])
 
     //React spring
@@ -85,9 +87,10 @@ function FloatingDialog(props){ //usersData, selectedUser, exercise (key)
                     >
                         <div className={`flex h-screen`}>
                             <div className={`m-auto`}>
-                                <div className={`w-full sm:w-full md:w-64 bg-${theme}-cardbg rounded-lg shadow-md m-1 sm:m-1 md:m-6 text-center`}>
+                                <div className={`w-64 sm:w-64 md:w-64 bg-${theme}-cardbg rounded-lg shadow-md m-1 sm:m-1 md:m-6 text-center`}>
 
-                                    <h2 className={`py-6 text-xl text-${theme}-tpr`}>Úprava váhy</h2>
+                                    <h2 className={`py-6 text-xl text-${theme}-tpr`}>{label}</h2>
+                                    {/* <h2 className={`py-1 text-lg text-${theme}-tpr`}>dsad</h2> */}
 
                                     <label className={`w-full text-${theme}-tsec`}>
                                         Pracovní váha

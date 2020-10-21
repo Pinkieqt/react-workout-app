@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -59,11 +60,11 @@ function App() {
             </div>
             :
             <div>
+              <Router>
               {
                 loggedUser === null ? 
                   <LoginComponent />
                 :
-                <Router>
                   <div className={`flex flex-col`}>
                     <Header usersData={usersData}/>
                     {/* <div className={`p-3 min-h-screen bg-myLightTheme-bg`}> */}
@@ -72,6 +73,7 @@ function App() {
                         <Route path="/weight"> <WeightComponent usersData={usersData}/> </Route>
                         <Route path="/records"> <RecordsComponent usersData={usersData}/> </Route>
                         <Route path="/plans"> <PlansComponent usersData={usersData}/> </Route>
+                        <Route> <Redirect to="/" /> </Route>
                       </Switch>          
                     {/* </div> */}
 
@@ -90,8 +92,8 @@ function App() {
                     />
 
                   </div>
-                </Router>
               }
+              </Router>
             </div>
           }
           
