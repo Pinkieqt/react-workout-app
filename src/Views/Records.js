@@ -66,7 +66,7 @@ function RecordsComponent(props) {
                 className={`flex justify-between px-2 sm:px-2 md:px-6 pt-2`}
               >
                 <span
-                  className={`tracking-wider inline-block text-${theme}-cardbg text-xs px-2 mt-1 rounded-full uppercase  ${tableDesign}`}
+                  className={`tracking-wider inline-block text-${theme}-cardbg text-xs px-2 mt-2 rounded-full uppercase  ${tableDesign}`}
                 >
                   {" "}
                   {exercise.kategorie}{" "}

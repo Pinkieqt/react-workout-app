@@ -5,12 +5,17 @@ import { ThemeContext } from "../Utilities/ThemeContext";
 import LineGraph from "../Components/LineGraph";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faUser } from "@fortawesome/free-regular-svg-icons";
+import { faAdjust, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import Notification from "../Components/Notification";
 import ArrivalsGraph from "../Components/ArrivalsGraph";
+import { useMediaQuery } from "react-responsive";
+import { UserContext } from "../App";
 
 const firebase = require("firebase");
 
 function DashboardComponent(props) {
+  const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
+  const { loggedUser, setLoggedUser } = React.useContext(UserContext);
   const { theme, setTheme } = React.useContext(ThemeContext);
   //props.usersData.
   //prichody tento rok, prichody celkove, posledni prichod
@@ -24,6 +29,31 @@ function DashboardComponent(props) {
   const [barGraphContent, setBarGraphContent] = useState([]);
   const [lineGraphContent, setLineGraphContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+
+  //function to changetheme - TODO: same func as in Navigation, fix later
+  const changeTheme = () => {
+    if (theme === "myLightTheme") {
+      setTheme("myDarkTheme");
+      localStorage.setItem("theme", "myDarkTheme");
+    } else {
+      setTheme("myLightTheme");
+      localStorage.setItem("theme", "myLightTheme");
+    }
+  };
+
+  //function to logout - TODO: same func as in Navigation, fix later
+  function signOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then((res) => {
+        setLoggedUser(null);
+      })
+      .catch((e) => {
+        setLoggedUser(null);
+      });
+  }
 
   //function to generate content for dashboard graphs, cards, etc.
   function generateContent() {
@@ -83,7 +113,15 @@ function DashboardComponent(props) {
     //Map elements to html
     latestArrivals = latestArrivals.slice(0, 5).map((element) => {
       let tmpDate =
-        element.date.getDate() + "/" + (element.date.getMonth() + 1);
+        element.date.getDate() + "." + (element.date.getMonth() + 1) + ".";
+
+      //Color of card background -> legs/shoulders/hands/chest/back
+      let iconColor = "text-magma-1"; //LEGS default
+      if (element.member === "Luke") iconColor = "text-magma-2";
+      else if (element.member === "Tom") iconColor = "text-magma-3";
+      else if (element.member === "Dudu") iconColor = "text-magma-4";
+      else if (element.member === "Cahlik") iconColor = "text-magma-5";
+
       return (
         <tr key={element.key}>
           <td
@@ -93,7 +131,7 @@ function DashboardComponent(props) {
               <FontAwesomeIcon
                 role="img"
                 aria-label="fntawsm"
-                className={`text-${theme}-tsec`}
+                className={iconColor}
                 icon={faUser}
               />
             </span>
@@ -120,7 +158,7 @@ function DashboardComponent(props) {
     });
 
     let date =
-      latest.toDate().getDate() + "/" + (latest.toDate().getMonth() + 1);
+      latest.toDate().getDate() + "." + (latest.toDate().getMonth() + 1) + ".";
 
     setArrivalsTableContent(latestArrivals);
     setBarGraphContent(barGraphData);
@@ -128,7 +166,7 @@ function DashboardComponent(props) {
       thisYear: thisYear,
       total: total,
       latest: date,
-      monthDiffer: monthThisYear - monthLastYear,
+      monthDiffer: monthThisYear - monthLastYear - 1,
     });
   }
 
@@ -244,7 +282,7 @@ function DashboardComponent(props) {
                   className={`w-full h-full bg-${theme}-cardbg rounded shadow-xl text-center`}
                 >
                   <div className={`w-full h-1 bg-magma-2`}></div>
-                  <div className={`pt-6 text-magma-2`}> celkem </div>
+                  <div className={`pt-6 text-magma-2`}> příchodů celkem </div>
                   <div className={`text-4xl font-bold text-${theme}-tsec`}>
                     {" "}
                     {content.total}{" "}
@@ -372,15 +410,64 @@ function DashboardComponent(props) {
             >
               <div className={`w-full`}>
                 <h3 className={`text-center text-${theme}-tsec mb-2`}>
-                  Heat mapa příchodů pro nynější rok
+                  Heat mapa příchodů pro vybraný rok
                 </h3>
+              </div>
+              <div className={`w-full mb-2 flex justify-center`}>
+                <button
+                  className={`text-center text-${theme}-tsec text-2xl`}
+                  onClick={() => setSelectedYear(selectedYear - 1)}
+                >
+                  &#8592;
+                </button>
+                <h4
+                  className={`text-center text-${theme}-sec ml-2 mr-2 text-2xl`}
+                >
+                  {selectedYear}
+                </h4>
+                <button
+                  className={`text-center text-${theme}-tsec text-2xl`}
+                  onClick={() => setSelectedYear(selectedYear + 1)}
+                >
+                  &#8594;
+                </button>
               </div>
               <div
                 className={`w-full bg-${theme}-cardbg rounded shadow-xl text-center`}
               >
-                <ArrivalsGraph usersData={props.usersData} />
+                <ArrivalsGraph
+                  usersData={props.usersData}
+                  selectedYear={selectedYear}
+                />
               </div>
             </div>
+
+            {isMobile && (
+              <div>
+                <span
+                  className={`text-lg text-${theme}-pr cursor-pointer`}
+                  onClick={() => changeTheme()}
+                >
+                  <FontAwesomeIcon
+                    role="img"
+                    aria-label="Theme"
+                    icon={faAdjust}
+                  />{" "}
+                  Téma
+                </span>
+                <span
+                  className={`ml-20 text-lg text-${theme}-pr cursor-pointer`}
+                  onClick={() => signOut()}
+                >
+                  <FontAwesomeIcon
+                    role="img"
+                    aria-label="fntawsm"
+                    icon={faSignOutAlt}
+                  />{" "}
+                  Odhlásit
+                </span>
+              </div>
+            )}
           </div>
         </div>
       )}

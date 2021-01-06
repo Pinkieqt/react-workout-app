@@ -16,7 +16,7 @@ function ArrivalsGraph(props) {
   function getTableContent() {
     let result = [];
     let arrivals = [];
-    let todaysYear = new Date().getFullYear();
+    let todaysYear = props.selectedYear;
 
     //Get all arrivals data combined
     for (let tmp in props.usersData.data) {
@@ -42,7 +42,7 @@ function ArrivalsGraph(props) {
       }
     }
 
-    for (let i = 0; i < 365; i++) {
+    for (let i = 1; i <= 365; i++) {
       let tmpDict = {};
       countedArrivals[i] ? (tmpDict[i] = countedArrivals[i]) : (tmpDict[i] = 0);
       result.push(tmpDict);

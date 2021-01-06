@@ -30,11 +30,11 @@ function ModalArrivalView(props) {
   let checkedButton =
     "bg-" +
     theme +
-    "-sec border-0 border-${theme}-sec text-white w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    "-sec border-0 border-${theme}-sec text-white w-32 px-2 py-1 sm:py-1 md:py-2  m-2 rounded-md transition duration-500 ease-in-out";
   let uncheckedButton =
     "text-" +
     theme +
-    "-tpr border w-32 px-2 py-1 sm:py-1 md:py-2  m-2 shadow-xl rounded-md transition duration-500 ease-in-out";
+    "-tpr border w-32 px-2 py-1 sm:py-1 md:py-2  m-2 rounded-md transition duration-500 ease-in-out";
 
   let checkboxItems = Members.map((item) => (
     <button
@@ -134,7 +134,7 @@ function ModalArrivalView(props) {
         <DatePicker
           onChange={(day) => setDate(day)}
           value={date}
-          className={`text-${theme}-tpr shadow rounded-md px-2 py-1 sm:py-1 md:py-2 cursor-pointer`}
+          className={`text-${theme}-tpr rounded-md px-2 py-1 sm:py-1 md:py-2 cursor-pointer`}
           calendarclassName={`text-black bg-${theme}-cardbg`}
           clearIcon={null}
           calendarIcon={null}
@@ -156,7 +156,7 @@ function ModalArrivalView(props) {
         <button
           onClick={() => props.submitHandler()}
           type="button"
-          className={`w-32 rounded-lg text-${theme}-tpr shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
+          className={`w-32 rounded-lg text-${theme}-tpr px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
         >
           Zrušit
         </button>
@@ -164,7 +164,7 @@ function ModalArrivalView(props) {
           disabled={isSubmitDisabled}
           onClick={() => onSubmit()}
           type="submit"
-          className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white shadow-xl px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
+          className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
         >
           Uložit změny
         </button>

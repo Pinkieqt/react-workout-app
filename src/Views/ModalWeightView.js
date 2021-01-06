@@ -123,14 +123,14 @@ function ModalWeightView(props) {
         <button
           onClick={() => props.submitHandler()}
           type="button"
-          className={`w-32 rounded-lg text-${theme}-tpr shadow-xl border px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
+          className={`w-32 rounded-lg text-${theme}-tpr px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
         >
           Zrušit
         </button>
         <button
           onClick={() => onSubmit()}
           type="submit"
-          className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white shadow-xl px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
+          className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
         >
           Uložit změny
         </button>
