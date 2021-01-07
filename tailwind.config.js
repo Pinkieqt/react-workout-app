@@ -15,14 +15,14 @@ module.exports = {
       },
       colors: {
         myLightTheme: {
-          pr: "#1B1A34", //primary
-          sec: "#7F6BFF", //secondary
+          pr: "#1B1A34", //primary accent -> darker accent to use on hover ?
+          sec: "#7F6BFF", //secondary accent -> lighter accent to show buttons etc..
           tpr: "#1B1A34", //text primary
           tsec: "#67677D", //text secondary
-          ttern: "#e8e8e8",
-          bg: "#F7F8FC",
-          cardbg: "#ffffff",
-          footerbg: "#1B1A34",
+          ttern: "#e8e8e8", //text tertiary
+          bg: "#F7F8FC", //primary background
+          cardbg: "#ffffff", //secondary background
+          footerbg: "#1B1A34", //footer bg
         },
         myDarkTheme: {
           pr: "#d0d0d3", //primary
@@ -41,15 +41,6 @@ module.exports = {
           4: "#FF0077",
           5: "#EA00BA",
           6: "#7F6BFF",
-          7: "#07051a",
-        },
-        magmas: {
-          1: "#fece90",
-          2: "#f76b5c",
-          3: "#d3446d",
-          4: "#992c7f",
-          5: "#58157e",
-          6: "#1B1A34",
           7: "#07051a",
         },
       },

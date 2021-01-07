@@ -11,12 +11,12 @@ function PlansComponent() {
         return (
           <tr key={element.key}>
             <td
-              className={`border border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
+              className={`border-0 border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
             >
               {element.label}
             </td>
             <td
-              className={`border border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
+              className={`border-0 border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
             >
               {element.series}
             </td>
@@ -37,7 +37,7 @@ function PlansComponent() {
     <div className={`p-3 min-h-screen bg-${theme}-bg`}>
       <div className={`w-full flex justify-center flex-wrap container mx-auto`}>
         <div className={`w-full mt-5 sm:mt-5 md:mt-10`}>
-          <h3 className={`font-bold text-2xl text-center text-${theme}-tsec`}>
+          <h3 className={`font-bold text-2xl text-center text-${theme}-tpr`}>
             PPL Workout plan
           </h3>
           <h3
@@ -56,7 +56,7 @@ function PlansComponent() {
 
         {/* WEEK 1 */}
         <div
-          className={`w-full sm:w-full md:w-1/3 bg-${theme}-cardbg rounded shadow-xl p-2 sm:p-2 md:p-10 text-center mr-0 sm:mr-0 md:mr-12 my-12`}
+          className={`w-full sm:w-full md:w-1/3 bg-${theme}-cardbg rounded   p-2 sm:p-2 md:p-10 text-center mr-0 sm:mr-0 md:mr-12 my-12`}
         >
           <table className={`w-full table-auto text-center py-2h-auto`}>
             <thead>
@@ -72,7 +72,7 @@ function PlansComponent() {
             <tbody>
               <tr>
                 <td
-                  className={`border border-${theme}-ttern px-4 py-1 text-magma-2`}
+                  className={`border-0 border-${theme}-ttern px-4 py-1 text-magma-2`}
                   colSpan="2"
                 >
                   {/* <div className={`w-2 h-2 -mx-3 rounded-full bg-blue-300`}></div> */}
@@ -83,7 +83,7 @@ function PlansComponent() {
 
               <tr>
                 <td
-                  className={`border border-${theme}-ttern px-4 py-1 text-magma-3`}
+                  className={`border-0 border-${theme}-ttern px-4 py-1 text-magma-3`}
                   colSpan="2"
                 >
                   Pull
@@ -93,7 +93,7 @@ function PlansComponent() {
 
               <tr>
                 <td
-                  className={`border border-${theme}-ttern px-4 py-1 text-magma-4`}
+                  className={`border-0 border-${theme}-ttern px-4 py-1 text-magma-4`}
                   colSpan="2"
                 >
                   Legs
@@ -106,7 +106,7 @@ function PlansComponent() {
 
         {/* WEEK 2 */}
         <div
-          className={`w-full sm:w-full md:w-1/3 bg-${theme}-cardbg rounded shadow-xl p-2 sm:p-2 md:p-10 text-center my-12`}
+          className={`w-full sm:w-full md:w-1/3 bg-${theme}-cardbg rounded   p-2 sm:p-2 md:p-10 text-center my-12`}
         >
           <table className={`w-full table-auto text-center py-2 h-auto`}>
             <thead>
@@ -122,7 +122,7 @@ function PlansComponent() {
             <tbody>
               <tr>
                 <td
-                  className={`border border-${theme}-ttern px-4 py-1 text-magma-2`}
+                  className={`border-0 border-${theme}-ttern px-4 py-1 text-magma-2`}
                   colSpan="2"
                 >
                   Push
@@ -132,7 +132,7 @@ function PlansComponent() {
 
               <tr>
                 <td
-                  className={`border border-${theme}-ttern px-4 py-1 text-magma-3`}
+                  className={`border-0 border-${theme}-ttern px-4 py-1 text-magma-3`}
                   colSpan="2"
                 >
                   Pull
@@ -142,7 +142,7 @@ function PlansComponent() {
 
               <tr>
                 <td
-                  className={`border border-${theme}-ttern px-4 py-1 text-magma-4`}
+                  className={`border-0 border-${theme}-ttern px-4 py-1 text-magma-4`}
                   colSpan="2"
                 >
                   Legs

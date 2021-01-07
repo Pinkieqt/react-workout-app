@@ -10,6 +10,7 @@ import Notification from "../Components/Notification";
 import ArrivalsGraph from "../Components/ArrivalsGraph";
 import { useMediaQuery } from "react-responsive";
 import { UserContext } from "../App";
+import FastCardPreview from "../Components/FastCardPreview";
 
 const firebase = require("firebase");
 
@@ -65,6 +66,15 @@ function DashboardComponent(props) {
 
     let latestArrivals = [];
     let barGraphData = [];
+    let weekArrivals = {
+      mon: 0,
+      tue: 0,
+      wed: 0,
+      thu: 0,
+      fri: 0,
+      sat: 0,
+      sun: 0,
+    };
 
     props.usersData.data.forEach((user) => {
       let userArrivalsEveryYear = { name: user.name };
@@ -110,7 +120,7 @@ function DashboardComponent(props) {
     //Sort latest arrivals
     latestArrivals = latestArrivals.sort((a, b) => b.date - a.date);
 
-    //Map elements to html
+    //Map latest arrivals to html
     latestArrivals = latestArrivals.slice(0, 5).map((element) => {
       let tmpDate =
         element.date.getDate() + "." + (element.date.getMonth() + 1) + ".";
@@ -267,70 +277,28 @@ function DashboardComponent(props) {
       {!isLoading && (
         <div className={`container mx-auto md:px-32`}>
           <div className={`flex justify-center flex-wrap`}>
-            <div className={`w-full mb-12 mt-5 sm:mt-5 md:mt-10`}>
+            <div className={`w-full mb-5 mt-5 sm:mt-5 md:mt-10`}>
               <h1
-                className={`font-bold text-2xl text-center text-${theme}-tsec`}
+                className={`font-bold text-3xl text-center text-${theme}-tpr`}
               >
                 Dashboard
               </h1>
             </div>
-            <div
-              className={`w-full flex justify-between flex-wrap mb-12 sm:mb-12 md:mb-12`}
-            >
-              <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 p-1 sm:p-1 md:p-0`}>
-                <div
-                  className={`w-full h-full bg-${theme}-cardbg rounded shadow-xl text-center`}
-                >
-                  <div className={`w-full h-1 bg-magma-2`}></div>
-                  <div className={`pt-6 text-magma-2`}> příchodů celkem </div>
-                  <div className={`text-4xl font-bold text-${theme}-tsec`}>
-                    {" "}
-                    {content.total}{" "}
-                  </div>
-                </div>
-              </div>
-              <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 p-1 sm:p-1 md:p-0`}>
-                <div
-                  className={`w-full h-full bg-${theme}-cardbg rounded shadow-xl text-center`}
-                >
-                  <div className={`w-full h-1 bg-magma-3`}></div>
-                  <div className={`pt-6 text-magma-3`}> rozdíl příchodů </div>
-                  <div className={`text-4xl font-bold text-${theme}-tsec`}>
-                    {" "}
-                    {content.monthDiffer}{" "}
-                  </div>
-                </div>
-              </div>
-              <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 p-1 sm:p-1 md:p-0`}>
-                <div
-                  className={`w-full h-full bg-${theme}-cardbg rounded shadow-xl text-center`}
-                >
-                  <div className={`w-full h-1 bg-magma-4`}></div>
-                  <div className={`pt-6 text-magma-4`}> tento rok </div>
-                  <div className={`text-4xl font-bold text-${theme}-tsec`}>
-                    {" "}
-                    {content.thisYear}{" "}
-                  </div>
-                </div>
-              </div>
-              <div className={`w-2/4 sm:w-2/4 md:w-48 h-32 p-1 sm:p-1 md:p-0`}>
-                <div
-                  className={`w-full h-full bg-${theme}-cardbg rounded shadow-xl text-center`}
-                >
-                  <div className={`w-full h-1 bg-magma-5`}></div>
-                  <div className={`pt-6 text-magma-5`}> poslední příchod</div>
-                  <div className={`text-4xl font-bold text-${theme}-tsec`}>
-                    {" "}
-                    {content.latest}{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            {/* Fast card preview */}
+            <FastCardPreview
+              data={[
+                { data: content.total, title: "příchodů celkem" },
+                { data: content.monthDiffer, title: "rozdíl příchodů" },
+                { data: content.thisYear, title: "tento rok" },
+                { data: content.latest, title: "poslední příchod" },
+              ]}
+            />
 
             {/* Příchody */}
             <div className={`w-full mb-2 sm:mb-2 md:mb-0`}>
               <h1
-                className={`font-bold text-2xl text-center text-${theme}-tsec`}
+                className={`font-bold text-2xl text-center text-${theme}-tpr`}
               >
                 Příchody
               </h1>
@@ -345,7 +313,7 @@ function DashboardComponent(props) {
               className={`w-full h-40 sm:h-40 md:h-64 p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-0`}
             >
               <div
-                className={`w-full h-40 sm:h-40 md:h-64 bg-${theme}-cardbg rounded shadow-xl text-center`}
+                className={`w-full h-40 sm:h-40 md:h-64 bg-${theme}-cardbg rounded  text-center`}
               >
                 <LineGraph categories={lineGraphContent} />
               </div>
@@ -364,7 +332,7 @@ function DashboardComponent(props) {
                   </h3>
                 </div>
                 <div
-                  className={`w-full h-64 bg-${theme}-cardbg rounded shadow-xl p-2 text-center`}
+                  className={`w-full h-64 bg-${theme}-cardbg rounded  p-2 text-center`}
                 >
                   <BarGraph arrivals={barGraphContent} />
                 </div>
@@ -379,7 +347,7 @@ function DashboardComponent(props) {
                   </h3>
                 </div>
                 <div
-                  className={`w-full h-64 bg-${theme}-cardbg rounded shadow-xl p-2 text-center`}
+                  className={`w-full h-64 bg-${theme}-cardbg rounded  p-2 text-center`}
                 >
                   <table className={`w-full table-auto text-center py-2 h-56`}>
                     <thead>
@@ -432,9 +400,7 @@ function DashboardComponent(props) {
                   &#8594;
                 </button>
               </div>
-              <div
-                className={`w-full bg-${theme}-cardbg rounded shadow-xl text-center`}
-              >
+              <div className={`w-full bg-${theme}-cardbg rounded  text-center`}>
                 <ArrivalsGraph
                   usersData={props.usersData}
                   selectedYear={selectedYear}

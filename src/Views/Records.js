@@ -50,6 +50,11 @@ function RecordsComponent(props) {
       else if (exercise.category === "back") tableDesign = "bg-yellow-400";
       else if (exercise.category === "shoulders") tableDesign = "bg-red-300";
       else if (exercise.category === "arms") tableDesign = "bg-green-300";
+      // let tableDesign = "bg-magma-2"; //LEGS default
+      // if (exercise.category === "chest") tableDesign = "bg-magma-3";
+      // else if (exercise.category === "back") tableDesign = "bg-magma-6";
+      // else if (exercise.category === "shoulders") tableDesign = "magma-5";
+      // else if (exercise.category === "arms") tableDesign = "bg-magma-4";
 
       if (selectedGroup === "all" || exercise.category === selectedGroup) {
         return (
@@ -59,7 +64,7 @@ function RecordsComponent(props) {
           >
             <div
               key={exercise.key}
-              className={`w-full sm:w-full md:w-56 bg-${theme}-cardbg rounded-lg shadow-lg text-left`}
+              className={`w-full sm:w-full md:w-56 bg-${theme}-cardbg rounded-lg  -lg text-left`}
             >
               <div className={`w-full h-1 rounded-full ${tableDesign}`}></div>
               <span

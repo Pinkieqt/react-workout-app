@@ -72,37 +72,37 @@ function ArrivalsGraph(props) {
   return (
     <div>
       <div className={`w-full flex flex-wrap justify-evenly p-2 pt-3`}>
-        <h6 className={`text-${theme}-tsec`}>
+        <h6 className={`text-${theme}-ttern`}>
           <div
             className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-${theme}-ttern`}
           ></div>
           0
         </h6>
-        <h6 className={`text-${theme}-tsec text-magma-2`}>
+        <h6 className={`text-magma-2`}>
           <div
             className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-2`}
           ></div>
           1
         </h6>
-        <h6 className={`text-${theme}-tsec text-magma-3`}>
+        <h6 className={`text-magma-3`}>
           <div
             className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-3`}
           ></div>
           2
         </h6>
-        <h6 className={`text-${theme}-tsec text-magma-4`}>
+        <h6 className={`text-magma-4`}>
           <div
             className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-4`}
           ></div>
           3
         </h6>
-        <h6 className={`text-${theme}-tsec text-magma-5`}>
+        <h6 className={`text-magma-5`}>
           <div
             className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-5`}
           ></div>
           4
         </h6>
-        <h6 className={`text-${theme}-tsec text-magma-6`}>
+        <h6 className={`text-magma-6`}>
           <div
             className={`w-2 sm:w-2 md:w-3 h-2 sm:h-2 md:h-3 rounded-sm m-1 bg-magma-6`}
           ></div>

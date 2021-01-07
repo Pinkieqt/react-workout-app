@@ -141,14 +141,14 @@ function FloatingDialog(props) {
                       <button
                         onClick={() => setShow(!show)}
                         type="submit"
-                        className={`w-1/2 text-${theme}-tpr rounded-lg p-3 m-3 mt-12`}
+                        className={`w-1/2 text-${theme}-sec rounded-lg p-3 m-3 mt-12`}
                       >
                         Storno
                       </button>
                       <button
                         onClick={() => onSubmit()}
                         type="button"
-                        className={`rounded-lg font-bold bg-${theme}-sec text-white border border-${theme}-cardbg p-3 m-3 mt-12 w-1/2`}
+                        className={`rounded-full font-bold bg-${theme}-sec bg-opacity-25 text-${theme}-sec hover:bg-opacity-50 border border-${theme}-cardbg p-3 m-3 mt-12 w-1/2`}
                       >
                         Uložit
                       </button>

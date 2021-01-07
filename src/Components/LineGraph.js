@@ -58,8 +58,8 @@ function LineGraph(props) {
       <LineChart
         data={graphData}
         margin={{
-          top: 5,
-          right: 30,
+          top: 10,
+          right: 20,
           left: 20,
           bottom: 5,
         }}

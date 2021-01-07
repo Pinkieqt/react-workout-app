@@ -69,7 +69,9 @@ function Navigation(method_props) {
           >
             <FontAwesomeIcon role="img" aria-label="fntawsm" icon={faTasks} />
           </NavLink>
-          <div className={`w-8 h-8 rounded-full bg-${theme}-sec text-center`}>
+          <div
+            className={`w-8 h-8 rounded-full bg-${theme}-sec bg-opacity-25 text-center`}
+          >
             <AppendModal usersData={method_props.usersData} />
           </div>
           <NavLink

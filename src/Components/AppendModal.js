@@ -24,7 +24,7 @@ function AppendModal(method_props) {
       {/* Other view for desktop and mobile */}
       {isMobile && (
         <div className={`w-full h-full`} onClick={() => setShow(!show)}>
-          <span className={`text-xl text-${theme}-tpr w-full h-full`}>
+          <span className={`text-xl text-${theme}-sec w-full h-full`}>
             <FontAwesomeIcon
               role="img"
               aria-label="fntawsm"
@@ -49,7 +49,7 @@ function AppendModal(method_props) {
       <Fade bottom when={show} duration={500}>
         {show && (
           <div
-            className={`fixed bg-${theme}-cardbg top-0 left-0 w-full h-full z-50 shadow p-3 text-center`}
+            className={`fixed bg-${theme}-cardbg top-0 left-0 w-full h-full z-50   p-3 text-center`}
           >
             <div className={`font-bold p-3 text-right`}>
               <span className={`text-xl text-${theme}-tpr`}>
@@ -66,13 +66,13 @@ function AppendModal(method_props) {
             {selector ? (
               <div>
                 <button
-                  className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white shadow-xl  px-3 py-1 sm:py-1 md:py-3 m-3`}
+                  className={`w-32 rounded-full font-bold bg-${theme}-sec bg-opacity-25 text-${theme}-sec    px-3 py-2 sm:py-2 md:py-3 m-3`}
                 >
                   Příchod
                 </button>
                 <button
                   onClick={() => setSelector(false)}
-                  className={`w-32 rounded-lg shadow-xl border text-${theme}-tpr hover:bg-${theme}-sec transition duration-500 ease-in-out px-3 py-1 sm:py-1 md:py-3 m-3`}
+                  className={`w-32 rounded-full   border text-${theme}-tpr hover:bg-${theme}-sec hover:bg-opacity-50 px-3 py-2 sm:py-2 md:py-3 m-3`}
                 >
                   Váha
                 </button>
@@ -81,12 +81,12 @@ function AppendModal(method_props) {
               <div>
                 <button
                   onClick={() => setSelector(true)}
-                  className={`w-32 rounded-lg shadow-xl border text-${theme}-tpr hover:bg-${theme}-sec transition duration-500 ease-in-out px-3 py-1 sm:py-1 md:py-3 m-3`}
+                  className={`w-32 rounded-full   border text-${theme}-tpr hover:bg-${theme}-sec hover:bg-opacity-50 px-3 py-2 sm:py-2 md:py-3 m-3`}
                 >
                   Příchod
                 </button>
                 <button
-                  className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white shadow-xl  px-3 py-1 sm:py-1 md:py-3 m-3`}
+                  className={`w-32 rounded-full font-bold bg-${theme}-sec bg-opacity-25 text-${theme}-sec    px-3 py-2 sm:py-2 md:py-3 m-3`}
                 >
                   Váha
                 </button>

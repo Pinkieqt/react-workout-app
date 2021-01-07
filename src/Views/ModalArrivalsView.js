@@ -149,14 +149,16 @@ function ModalArrivalView(props) {
           O provedených změnách budeš informován.
         </h2>
       )}
-      <div className={`flex-col sm:flex-col md:flex-row items-center`}>
+      <div
+        className={`flex-col sm:flex-col md:flex-row items-center mt-10 sm:mt-10 md:mt-0`}
+      >
         {checkboxItems}
       </div>
-      <div className={`flex justify-center flex-wrap`}>
+      <div className={`flex justify-center flex-wrap mt-10 `}>
         <button
           onClick={() => props.submitHandler()}
           type="button"
-          className={`w-32 rounded-lg text-${theme}-tpr px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
+          className={`w-32 rounded-full text-${theme}-sec px-3 py-2 sm:py-2 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
         >
           Zrušit
         </button>
@@ -164,7 +166,7 @@ function ModalArrivalView(props) {
           disabled={isSubmitDisabled}
           onClick={() => onSubmit()}
           type="submit"
-          className={`w-32 rounded-lg font-bold bg-${theme}-sec text-white px-3 py-1 sm:py-1 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
+          className={`w-32 rounded-full font-bold bg-${theme}-sec bg-opacity-25 text-${theme}-sec hover:bg-opacity-50 px-3py-2 sm:py-2 md:py-3 m-3 mt-5 sm:mt-5 md:mt-12`}
         >
           Uložit změny
         </button>
