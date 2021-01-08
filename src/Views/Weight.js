@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
 import { ThemeContext } from "../Utilities/ThemeContext";
 import Members from "../Helpfiles/Members";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import WeightGraph from "../Components/WeightGraph";
 import FastCardPreview from "../Components/FastCardPreview";
+import { DefUserContext } from "../Utilities/DefUserContext";
 
 function WeightComponent(props) {
   const { theme, setTheme } = React.useContext(ThemeContext);
-  const [selectedUser, setSelectedUser] = React.useState("dudu");
+  const { defUser, setDefUser } = React.useContext(DefUserContext);
   const [memberWeightData, setMemberWeightData] = React.useState([]);
   const [memberCardData, setMemberCardData] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(true);
@@ -20,7 +19,7 @@ function WeightComponent(props) {
     if (props.usersData.data.length > 0) {
       setIsLoading(false);
       const memberData = props.usersData.data.filter((member) => {
-        return member.id === selectedUser;
+        return member.id === defUser;
       });
       //Members max and work weights
       if (memberData) {
@@ -42,12 +41,20 @@ function WeightComponent(props) {
             idk: memberData[0].weightData.length,
           });
           setMemberWeightData(memberData[0].weightData);
+        } else {
+          setMemberCardData({
+            max: "-",
+            min: "-",
+            avg: "-",
+            idk: "-",
+          });
+          setMemberWeightData([]);
         }
       }
     } else {
       setIsLoading(true);
     }
-  }, [props, selectedUser]);
+  }, [props, defUser]);
 
   //Function to get weight table data
   function getWeightTableData() {
@@ -116,7 +123,11 @@ function WeightComponent(props) {
                 className={`text-${theme}-tpr bg-${theme}-bg text-xl p-2 mb-5 cursor-pointer mx-3`}
                 name="members"
                 id="memberSelector"
-                onChange={(e) => setSelectedUser(e.target.value)}
+                value={defUser}
+                onChange={(e) => {
+                  setDefUser(e.target.value);
+                  localStorage.setItem("defaultUser", e.target.value);
+                }}
               >
                 {userOptions}
               </select>

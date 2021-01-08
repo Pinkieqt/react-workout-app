@@ -59,7 +59,7 @@ function FloatingDialog(props) {
           .doc(props.selectedUser)
           .update({ exercisesData: tmpExData })
           .then(function () {
-            Notification("Záznam byl upraven.", false);
+            Notification(label + " upraven.", false);
           })
           .catch(function (error) {
             console.log(error);
@@ -108,6 +108,14 @@ function FloatingDialog(props) {
                       Pracovní váha
                     </label>
                     <div className={`py-3`}>
+                      <button
+                        className={`text-center text-${theme}-tsec text-3xl mx-2`}
+                        onClick={() =>
+                          setWork((parseFloat(work) - 1).toFixed(1))
+                        }
+                      >
+                        &#8592;
+                      </button>
                       <input
                         className={`font-bold text-xl text-center bg-${theme}-cardbg text-${theme}-tpr`}
                         type="number"
@@ -119,12 +127,26 @@ function FloatingDialog(props) {
                         value={work}
                         onChange={(e) => setWork(e.target.value)}
                       />
+                      <button
+                        className={`text-center text-${theme}-tsec text-3xl mx-2`}
+                        onClick={() =>
+                          setWork((parseFloat(work) + 1).toFixed(1))
+                        }
+                      >
+                        &#8594;
+                      </button>
                     </div>
 
                     <label className={`w-full text-${theme}-tsec pt-5`}>
                       Maximální váha
                     </label>
                     <div className={`py-3`}>
+                      <button
+                        className={`text-center text-${theme}-tsec text-3xl mx-2`}
+                        onClick={() => setMax((parseFloat(max) - 1).toFixed(1))}
+                      >
+                        &#8592;
+                      </button>
                       <input
                         className={`font-bold text-xl text-center bg-${theme}-cardbg text-${theme}-tpr`}
                         type="number"
@@ -136,6 +158,12 @@ function FloatingDialog(props) {
                         value={max}
                         onChange={(e) => setMax(e.target.value)}
                       />
+                      <button
+                        className={`text-center text-${theme}-tsec text-3xl mx-2`}
+                        onClick={() => setMax((parseFloat(max) + 1).toFixed(1))}
+                      >
+                        &#8594;
+                      </button>
                     </div>
                     <div className={`flex justify-center w-full`}>
                       <button

@@ -5,12 +5,13 @@ import Exercises from "../Helpfiles/Exercises";
 import Members from "../Helpfiles/Members";
 import MuscleGroups from "../Helpfiles/MuscleGroups";
 import FloatingDialog from "../Components/FloatingDialog";
+import { DefUserContext } from "../Utilities/DefUserContext";
 
 function RecordsComponent(props) {
   const { theme, setTheme } = React.useContext(ThemeContext);
+  const { defUser, setDefUser } = React.useContext(DefUserContext);
 
   const [selectedGroup, setSelectedGroup] = useState("all");
-  const [selectedUser, setSelectedUser] = useState("dudu");
   const [isLoading, setIsLoading] = useState(true);
 
   //Generate new content everytime when props change
@@ -20,13 +21,13 @@ function RecordsComponent(props) {
     } else {
       setIsLoading(true);
     }
-  }, [props, selectedUser]);
+  }, [props, defUser]);
 
   //Cards
   let cards = Exercises.map((exercise) => {
     if (!isLoading) {
       const memberData = props.usersData.data.filter((member) => {
-        return member.id === selectedUser;
+        return member.id === defUser;
       });
 
       let work = 0;
@@ -78,7 +79,7 @@ function RecordsComponent(props) {
                 </span>
                 <FloatingDialog
                   usersData={props.usersData}
-                  selectedUser={selectedUser}
+                  selectedUser={defUser}
                   exlabel={exercise.label}
                   exercise={exercise.key}
                   exMax={max}
@@ -138,7 +139,11 @@ function RecordsComponent(props) {
               className={`text-${theme}-tpr bg-${theme}-bg text-xl p-2 mb-5 cursor-pointer mx-3`}
               name="members"
               id="memberSelector"
-              onChange={(e) => setSelectedUser(e.target.value)}
+              value={defUser}
+              onChange={(e) => {
+                setDefUser(e.target.value);
+                localStorage.setItem("defaultUser", e.target.value);
+              }}
             >
               {userOptions}
             </select>

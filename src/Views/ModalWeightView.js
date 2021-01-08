@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import Members from "../Helpfiles/Members";
 import Notification from "../Components/Notification";
 import { ThemeContext } from "../Utilities/ThemeContext";
+import { DefUserContext } from "../Utilities/DefUserContext";
 
 const firebase = require("firebase");
 
 function ModalWeightView(props) {
   const { theme, setTheme } = React.useContext(ThemeContext);
+  const { defUser, setDefUser } = React.useContext(DefUserContext);
 
-  const [selectedUser, setSelectedUser] = useState("dudu");
   const [inputWeight, setInputWeight] = useState(70);
 
   let options = Members.map((member) => (
@@ -20,7 +21,7 @@ function ModalWeightView(props) {
   //Get previous weight of selected user
   useEffect(() => {
     const memberData = props.usersData.data.filter((item) => {
-      return item.id === selectedUser;
+      return item.id === defUser;
     });
 
     //Get latest weight record
@@ -30,11 +31,12 @@ function ModalWeightView(props) {
     //Set it as state
     if (tmpWeight !== undefined) setInputWeight(tmpWeight.weight);
     else setInputWeight(70);
-  }, [selectedUser]);
+  }, [defUser]);
 
   //Select handler
   function onSelectChangeHandle(e) {
-    setSelectedUser(e.target.value);
+    setDefUser(e.target.value);
+    localStorage.setItem("defaultUser", e.target.value);
   }
 
   //Range select handler
@@ -49,7 +51,7 @@ function ModalWeightView(props) {
     date.setHours(12, 0, 0, 0);
 
     const memberData = props.usersData.data.filter((member) => {
-      return member.id === selectedUser;
+      return member.id === defUser;
     });
     let isInside = false;
     let tmpWeight = memberData[0].weightData;
@@ -75,7 +77,7 @@ function ModalWeightView(props) {
 
     //Update record in database
     db.collection("users")
-      .doc(selectedUser)
+      .doc(defUser)
       .update({ weightData: tmpWeight })
       .catch(function (error) {
         console.log(error);
@@ -101,6 +103,7 @@ function ModalWeightView(props) {
         className={`bg-${theme}-cardbg text-${theme}-tpr text-xl p-2 cursor-pointer`}
         name="members"
         id="memberSelector"
+        value={defUser}
         onChange={(e) => onSelectChangeHandle(e)}
       >
         {options}
