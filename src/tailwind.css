@@ -21546,6 +21546,9 @@ video {
   animation: bounce 1s infinite;
 }
 
+.Toastify__toast--success {
+}
+
 .kokot {
   height: 3000px;
 }

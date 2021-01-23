@@ -20,7 +20,10 @@ function FloatingDialog(props) {
     setMax(props.exMax);
     setWork(props.exWork);
     setLabel(props.exlabel);
-  }, [props]);
+    show
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [props, show]);
 
   //React spring
   const menuTransition = useTransition(show, null, {

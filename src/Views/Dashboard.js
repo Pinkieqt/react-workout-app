@@ -6,11 +6,11 @@ import LineGraph from "../Components/LineGraph";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faAdjust, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import Notification from "../Components/Notification";
 import ArrivalsGraph from "../Components/ArrivalsGraph";
 import { useMediaQuery } from "react-responsive";
 import { UserContext } from "../App";
 import FastCardPreview from "../Components/FastCardPreview";
+import ArrivalsModal from "../Components/ArrivalsModal";
 
 const firebase = require("firebase");
 
@@ -18,7 +18,7 @@ function DashboardComponent(props) {
   const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
   const { loggedUser, setLoggedUser } = React.useContext(UserContext);
   const { theme, setTheme } = React.useContext(ThemeContext);
-  //props.usersData.
+
   //prichody tento rok, prichody celkove, posledni prichod
   const [content, setContent] = useState({
     thisYear: "",
@@ -26,8 +26,10 @@ function DashboardComponent(props) {
     latest: "",
     monthDiffer: "",
   });
-  const [arrivalsTableContent, setArrivalsTableContent] = useState();
+
+  const [arrivalsTableContent, setArrivalsTableContent] = useState([]);
   const [barGraphContent, setBarGraphContent] = useState([]);
+  const [arrivalsModalContent, setArrivalsModalContent] = useState([]);
   const [lineGraphContent, setLineGraphContent] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
@@ -119,6 +121,7 @@ function DashboardComponent(props) {
 
     //Sort latest arrivals
     latestArrivals = latestArrivals.sort((a, b) => b.date - a.date);
+    setArrivalsModalContent(latestArrivals.slice());
 
     //Map latest arrivals to html
     latestArrivals = latestArrivals.slice(0, 5).map((element) => {
@@ -152,7 +155,7 @@ function DashboardComponent(props) {
           >
             {tmpDate}
           </td>
-          <td className={`border-0 border-${theme}-ttern px-4 py-1`}>
+          {/* <td className={`border-0 border-${theme}-ttern px-4 py-1`}>
             <span>
               <FontAwesomeIcon
                 role="img"
@@ -162,7 +165,7 @@ function DashboardComponent(props) {
                 onClick={() => deleteLastArrival(element)}
               />
             </span>
-          </td>
+          </td> */}
         </tr>
       );
     });
@@ -177,42 +180,6 @@ function DashboardComponent(props) {
       total: total,
       latest: date,
       monthDiffer: monthThisYear - monthLastYear - 1,
-    });
-  }
-
-  //function to delete last arrival
-  function deleteLastArrival(element) {
-    const db = firebase.firestore();
-
-    let tmpArrivals = [];
-    props.usersData.data.forEach((user) => {
-      if (user.name === element.member) {
-        tmpArrivals = user.arrivals;
-        tmpArrivals.forEach((arrival) => {
-          if (
-            arrival.toDate().getTime() ===
-            firebase.firestore.Timestamp.fromDate(element.date)
-              .toDate()
-              .getTime()
-          ) {
-            //Delete arrival from array
-            if (window.confirm("Opravdu vymazat záznam?")) {
-              tmpArrivals.splice(tmpArrivals.indexOf(arrival), 1);
-              //Update record in database
-              db.collection("users")
-                .doc(user.id)
-                .update({ arrivals: tmpArrivals })
-                .then(function () {
-                  Notification("Záznam byl smazán.", false);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                  Notification("Chyba", true);
-                });
-            }
-          }
-        });
-      }
     });
   }
 
@@ -363,18 +330,33 @@ function DashboardComponent(props) {
                         >
                           Příchod
                         </th>
-                        <th className={`px-4 py-2 mt-1 text-${theme}-tpr`}></th>
+                        {/* <th className={`px-4 py-2 mt-1 text-${theme}-tpr`}></th> */}
                       </tr>
                     </thead>
                     <tbody>{arrivalsTableContent}</tbody>
                   </table>
                 </div>
               </div>
+
+              {/* Historie příchodů */}
+
+              <div className={`w-full`}>
+                <h3
+                  className={`text-center text-${theme}-tsec mt-5 sm:mt-5 md:mt-24 px-5`}
+                >
+                  Pro zobrazení historie příchodů a jejich správu, klikni na
+                  tlačítko níže.
+                </h3>
+              </div>
+              <ArrivalsModal
+                data={arrivalsModalContent}
+                usersData={props.usersData}
+              />
             </div>
 
             {/* ArrivalsGraph */}
             <div
-              className={`w-full p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-12 mt-5 sm:mt-5 md:mt-20`}
+              className={`w-full p-1 sm:p-1 md:p-6 mb-12 sm:mb-12 md:mb-6 mt-5 sm:mt-5 md:mt-12`}
             >
               <div className={`w-full`}>
                 <h3 className={`text-center text-${theme}-tsec mb-2`}>

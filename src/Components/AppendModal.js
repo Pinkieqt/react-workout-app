@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
@@ -13,6 +13,12 @@ function AppendModal(method_props) {
   const [show, setShow] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-device-width: 1024px)" });
   const [selector, setSelector] = useState(true);
+
+  useEffect(() => {
+    show
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [show]);
 
   //Handler to dismiss modal
   function showHandler() {

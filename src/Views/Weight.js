@@ -59,34 +59,31 @@ function WeightComponent(props) {
   //Function to get weight table data
   function getWeightTableData() {
     let tmpWeightTableData = [];
-
-    //date and weight
-    let i = numOfRecords;
-    //tmpArray.reverse();
-    while (i >= numOfRecords - 10) {
-      if (memberWeightData[i]) {
-        let tmpDate = memberWeightData[i].date.toDate();
-        tmpWeightTableData.push(
-          <tr key={i}>
-            <td
-              className={`w-1/2 border-0 border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
-            >
-              {tmpDate.getDate() +
-                "." +
-                (tmpDate.getMonth() + 1) +
-                "." +
-                tmpDate.getFullYear()}
-            </td>
-            <td
-              className={`w-1/2 border-0 border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
-            >
-              {memberWeightData[i].weight} &nbsp;kg
-            </td>
-          </tr>
-        );
-      }
-      i--;
-    }
+    let newarray = memberWeightData.slice().reverse();
+    let slicedWeightData = newarray.slice(numOfRecords - 10, numOfRecords);
+    let i = 0;
+    slicedWeightData.map((element) => {
+      let tmpDate = element.date.toDate();
+      tmpWeightTableData.push(
+        <tr key={i}>
+          <td
+            className={`w-1/2 border-0 border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
+          >
+            {tmpDate.getDate() +
+              "." +
+              (tmpDate.getMonth() + 1) +
+              "." +
+              tmpDate.getFullYear()}
+          </td>
+          <td
+            className={`w-1/2 border-0 border-${theme}-ttern px-4 py-1 text-${theme}-tsec`}
+          >
+            {element.weight} &nbsp;kg
+          </td>
+        </tr>
+      );
+      i++;
+    });
 
     return tmpWeightTableData;
   }

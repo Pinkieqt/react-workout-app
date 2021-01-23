@@ -56,13 +56,13 @@ function WeightGraph(props) {
         margin={{
           top: 20,
           right: 20,
-          left: 20,
+          left: -15,
           bottom: 5,
         }}
       >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
+        {/* <CartesianGrid strokeDasharray="10 10" /> */}
         <XAxis dataKey="entry" />
-        <YAxis domain={["dataMin", "dataMax"]} hide />
+        <YAxis domain={["dataMin", "dataMax"]} />
         <Tooltip content={<CustomTooltip />} />
         <Legend formatter={renderColorfulLegendText} />
 
