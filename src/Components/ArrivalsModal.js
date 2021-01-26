@@ -166,7 +166,7 @@ function ArrivalsModal(props) {
             </button>
             {/* Closing button */}
             <div
-              className={`font-bold p-3 fixed bottom-0 left-0 w-full z-50 mb-6`}
+              className={`font-bold p-3 sticky bottom-0 left-0 w-full z-50 mb-6`}
             >
               <button
                 onClick={() => setShow(!show)}

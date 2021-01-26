@@ -5,6 +5,7 @@ function ArrivalsGraph(props) {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   const [tableContent, setTableContent] = useState([]);
+  const [daysCount, setDaysCount] = useState(365);
 
   //Generate new content everytime when props change
   useEffect(() => {
@@ -13,6 +14,10 @@ function ArrivalsGraph(props) {
     }
   }, [props]);
 
+  //Function to get day of month in year
+  function getHoverDate(hoverDate) {}
+
+  //Function to get table content
   function getTableContent() {
     let result = [];
     let arrivals = [];
@@ -42,12 +47,18 @@ function ArrivalsGraph(props) {
       }
     }
 
-    for (let i = 1; i <= 365; i++) {
+    //Get number of days in current year
+    let dcount = 365;
+    todaysYear % 400 === 0 || (todaysYear % 100 !== 0 && todaysYear % 4 === 0)
+      ? (dcount = 366)
+      : (dcount = 365);
+
+    for (let i = 1; i <= daysCount; i++) {
       let tmpDict = {};
       countedArrivals[i] ? (tmpDict[i] = countedArrivals[i]) : (tmpDict[i] = 0);
       result.push(tmpDict);
     }
-
+    setDaysCount(dcount);
     setTableContent(result);
   }
 

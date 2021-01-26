@@ -95,7 +95,10 @@ function App() {
                       </Switch>
                       {/* </div> */}
 
-                      <Footer className={`mt-12 sm:mt-12 md:mt-0`} />
+                      <Footer
+                        data={usersData}
+                        className={`mt-12 sm:mt-12 md:mt-0`}
+                      />
 
                       <ToastContainer
                         position="top-center"

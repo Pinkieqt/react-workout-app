@@ -55,7 +55,7 @@ function AppendModal(method_props) {
       <Fade bottom when={show} duration={500}>
         {show && (
           <div
-            className={`fixed bg-${theme}-cardbg top-0 left-0 w-full h-full z-50   p-3 text-center`}
+            className={`fixed bg-${theme}-cardbg top-0 left-0 w-full h-full z-50 p-3 text-center`}
           >
             <div className={`font-bold p-3 text-right`}>
               <span className={`text-xl text-${theme}-tpr`}>
